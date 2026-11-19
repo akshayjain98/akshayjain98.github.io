@@ -38,7 +38,9 @@ const toneClass: Record<Tone, string> = {
 
 const Thinking: React.FC = () => (
   <p className="text-[#d97757] flex items-center gap-2" aria-label="Thinking">
-    <span aria-hidden className="inline-block animate-spin [animation-duration:1.6s]">✻</span>
+    <span aria-hidden className="inline-block animate-spin [animation-duration:1.6s]">
+      ✻
+    </span>
     <span className="animate-pulse">Thinking…</span>
   </p>
 );
@@ -59,11 +61,7 @@ const StreamedLines: React.FC<{ lines: Line[]; shown: number }> = ({ lines, show
     out.push(
       <p key={i} className={`${toneClass[l.tone ?? 'default']} whitespace-pre-wrap min-h-[1.55em]`} style={l.indent ? { paddingLeft: `${l.indent * 1.25}em` } : undefined}>
         {l.href ? (
-          <a
-            href={l.href}
-            className="text-[#2997ff] underline underline-offset-2 hover:text-white break-all"
-            {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          >
+          <a href={l.href} className="text-[#2997ff] underline underline-offset-2 hover:text-white break-all" {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             {text}
           </a>
         ) : (
@@ -73,11 +71,30 @@ const StreamedLines: React.FC<{ lines: Line[]; shown: number }> = ({ lines, show
       </p>,
     );
   }
-  if (!done && out.length === 0) out.push(<p key="c"><Cursor /></p>);
+  if (!done && out.length === 0)
+    out.push(
+      <p key="c">
+        <Cursor />
+      </p>,
+    );
   return <>{out}</>;
 };
 
-export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
+/** Arrows pointing out (expand) or in (collapse). */
+const ResizeIcon: React.FC<{ expanded: boolean }> = ({ expanded }) => (
+  <svg aria-hidden viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    {expanded ? <path d="M6.5 2v4.5H2M9.5 14V9.5H14M2 2l4.5 4.5M14 14l-4.5-4.5" /> : <path d="M10 2h4v4M6 14H2v-4M14 2 9 7M2 14l5-5" />}
+  </svg>
+);
+
+interface TerminalProps {
+  data: TerminalData;
+  /** Bigger, easier-to-read terminal. The parent owns this so the surrounding layout can make room. */
+  expanded?: boolean;
+  onToggleExpand?: () => void;
+}
+
+export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onToggleExpand }) => {
   const welcome: Entry = useMemo(
     () => ({
       id: 0,
@@ -92,7 +109,11 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
 
   const [entries, setEntries] = useState<Entry[]>([welcome]);
   // The entry currently "streaming" in: shown < 0 means the thinking pulse, otherwise how many characters are visible.
-  const [stream, setStream] = useState<Stream | null>(() => ({ id: welcome.id, total: totalChars(welcome.lines), shown: -1 }));
+  const [stream, setStream] = useState<Stream | null>(() => ({
+    id: welcome.id,
+    total: totalChars(welcome.lines),
+    shown: -1,
+  }));
   const [input, setInput] = useState('');
   const [sel, setSel] = useState(0);
   const [menuOpen, setMenuOpen] = useState(true);
@@ -139,7 +160,7 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
   useEffect(() => {
     const el = outRef.current;
     if (el) el.scrollTop = el.scrollHeight;
-  }, [entries, stream?.shown]);
+  }, [entries, stream?.shown, expanded]);
 
   // Press "/" anywhere on the page to jump into the terminal.
   useEffect(() => {
@@ -222,6 +243,9 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
     if (e.key === 'Escape' && stream) {
       e.preventDefault();
       skipStream();
+    } else if (e.key === 'Escape' && expanded && onToggleExpand) {
+      e.preventDefault();
+      onToggleExpand();
     } else if (e.key === 'Enter') {
       e.preventDefault();
       execute(input);
@@ -248,6 +272,12 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
     }
   };
 
+  const toggleExpand = () => {
+    onToggleExpand?.();
+    inputRef.current?.focus({ preventScroll: true });
+  };
+  const resizeLabel = expanded ? 'Collapse terminal' : 'Expand terminal';
+
   const prompt = (
     <span className="select-none">
       <span className="text-[#30d158]">~/{data.profile.firstName.toLowerCase()}</span>
@@ -257,7 +287,7 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
 
   return (
     <div
-      className="w-full rounded-[28px] bg-black text-white overflow-hidden font-mono text-[13px] leading-[1.55] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)]"
+      className={`w-full rounded-[28px] bg-black text-white overflow-hidden font-mono ${expanded ? 'text-[14px] sm:text-[15px]' : 'text-[13px]'} leading-[1.55] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)]`}
       onClick={(e) => {
         // Focus the prompt when clicking empty terminal space, but not when selecting text or clicking links.
         if (!(e.target as HTMLElement).closest('a,button') && !window.getSelection()?.toString()) inputRef.current?.focus({ preventScroll: true });
@@ -266,10 +296,25 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
       <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
         <span aria-hidden className="h-3 w-3 rounded-full bg-[#ff5f57]" />
         <span aria-hidden className="h-3 w-3 rounded-full bg-[#febc2e]" />
-        <span aria-hidden className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <span className="ml-2 text-xs text-[#86868b] truncate">
-          {data.profile.firstName.toLowerCase()}@portfolio: ~
-        </span>
+        {onToggleExpand ? (
+          // Green "zoom" light, like macOS. The labelled button on the right is the primary control.
+          <button type="button" tabIndex={-1} aria-hidden title={resizeLabel} onClick={toggleExpand} className="h-3 w-3 rounded-full bg-[#28c840] hover:brightness-110" />
+        ) : (
+          <span aria-hidden className="h-3 w-3 rounded-full bg-[#28c840]" />
+        )}
+        <span className="ml-2 text-xs text-[#86868b] truncate">{data.profile.firstName.toLowerCase()}@portfolio: ~</span>
+        {onToggleExpand && (
+          <button
+            type="button"
+            onClick={toggleExpand}
+            aria-label={resizeLabel}
+            aria-pressed={expanded}
+            title={expanded ? 'Collapse (Esc)' : 'Expand'}
+            className="ml-auto -mr-1.5 rounded-lg p-1.5 text-[#86868b] hover:bg-white/10 hover:text-white transition-colors"
+          >
+            <ResizeIcon expanded={expanded} />
+          </button>
+        )}
       </div>
 
       <div className="relative">
@@ -278,7 +323,7 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
           aria-live="polite"
           aria-busy={stream !== null}
           onClick={() => stream && skipStream()}
-          className="h-[300px] sm:h-[340px] overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words"
+          className={`${expanded ? 'h-[420px] sm:h-[520px] lg:h-[560px]' : 'h-[300px] sm:h-[340px]'} motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-out overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words`}
         >
           {entries.map((entry) => {
             const streaming = stream?.id === entry.id ? stream : null;
@@ -350,20 +395,11 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
 
       <div className="flex flex-wrap gap-2 px-5 pb-4">
         {QUICK.map((q) => (
-          <button
-            key={q}
-            type="button"
-            onClick={() => execute(q)}
-            className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-          >
+          <button key={q} type="button" onClick={() => execute(q)} className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors">
             {q}
           </button>
         ))}
-        <button
-          type="button"
-          onClick={() => execute('/help')}
-          className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-        >
+        <button type="button" onClick={() => execute('/help')} className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors">
           /help
         </button>
       </div>
