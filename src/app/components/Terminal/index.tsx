@@ -36,6 +36,47 @@ const toneClass: Record<Tone, string> = {
   success: 'text-[#30d158]',
 };
 
+const Thinking: React.FC = () => (
+  <p className="text-[#d97757] flex items-center gap-2" aria-label="Thinking">
+    <span aria-hidden className="inline-block animate-spin [animation-duration:1.6s]">✻</span>
+    <span className="animate-pulse">Thinking…</span>
+  </p>
+);
+
+const Cursor: React.FC = () => <span aria-hidden className="ml-px inline-block h-[1.05em] w-[0.55em] translate-y-[0.15em] bg-white/80 animate-pulse" />;
+
+/** Renders lines up to `shown` characters; Infinity renders everything. The cursor sits where the text ends. */
+const StreamedLines: React.FC<{ lines: Line[]; shown: number }> = ({ lines, shown }) => {
+  const done = shown === Infinity;
+  let budget = shown;
+  const out: React.ReactNode[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (!done && budget <= 0) break;
+    const l = lines[i];
+    const text = done ? l.text : l.text.slice(0, budget);
+    budget -= l.text.length + 1;
+    const active = !done && budget <= 0;
+    out.push(
+      <p key={i} className={`${toneClass[l.tone ?? 'default']} whitespace-pre-wrap min-h-[1.55em]`} style={l.indent ? { paddingLeft: `${l.indent * 1.25}em` } : undefined}>
+        {l.href ? (
+          <a
+            href={l.href}
+            className="text-[#2997ff] underline underline-offset-2 hover:text-white break-all"
+            {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {text}
+          </a>
+        ) : (
+          text
+        )}
+        {active && <Cursor />}
+      </p>,
+    );
+  }
+  if (!done && out.length === 0) out.push(<p key="c"><Cursor /></p>);
+  return <>{out}</>;
+};
+
 export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
   const welcome: Entry = useMemo(
     () => ({
@@ -232,32 +273,27 @@ export const Terminal: React.FC<{ data: TerminalData }> = ({ data }) => {
       </div>
 
       <div className="relative">
-        <div ref={outRef} aria-live="polite" className="h-[300px] sm:h-[340px] overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words">
-          {entries.map((entry) => (
-            <div key={entry.id} className="mb-3">
-              {entry.input && (
-                <p>
-                  {prompt}
-                  <span className="text-white">{entry.input}</span>
-                </p>
-              )}
-              {entry.lines.map((l, i) => (
-                <p key={i} className={`${toneClass[l.tone ?? 'default']} whitespace-pre-wrap min-h-[1.55em]`} style={l.indent ? { paddingLeft: `${l.indent * 1.25}em` } : undefined}>
-                  {l.href ? (
-                    <a
-                      href={l.href}
-                      className="text-[#2997ff] underline underline-offset-2 hover:text-white break-all"
-                      {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    >
-                      {l.text}
-                    </a>
-                  ) : (
-                    l.text
-                  )}
-                </p>
-              ))}
-            </div>
-          ))}
+        <div
+          ref={outRef}
+          aria-live="polite"
+          aria-busy={stream !== null}
+          onClick={() => stream && skipStream()}
+          className="h-[300px] sm:h-[340px] overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words"
+        >
+          {entries.map((entry) => {
+            const streaming = stream?.id === entry.id ? stream : null;
+            return (
+              <div key={entry.id} className="mb-3">
+                {entry.input && (
+                  <p>
+                    {prompt}
+                    <span className="text-white">{entry.input}</span>
+                  </p>
+                )}
+                {streaming && streaming.shown < 0 ? <Thinking /> : <StreamedLines lines={entry.lines} shown={streaming ? streaming.shown : Infinity} />}
+              </div>
+            );
+          })}
         </div>
 
         {showMenu && (
