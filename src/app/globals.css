@@ -25,17 +25,17 @@ body {
 @layer components {
   /* Apple-style pill buttons */
   .btn-apple {
-    @apply inline-flex items-center justify-center gap-1 rounded-full bg-apple-blue px-[22px] py-3 text-[17px] font-normal leading-[1.18] text-white transition duration-200 ease-out hover:bg-apple-blue-hover active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-apple-blue/30;
+    @apply inline-flex items-center justify-center gap-1 rounded-full bg-apple-blue px-[18px] py-2 text-sm font-normal leading-[1.29] text-white transition duration-200 ease-out hover:bg-apple-blue-hover active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-apple-blue/30;
   }
   .btn-apple-outline {
-    @apply inline-flex items-center justify-center gap-1 rounded-full border border-apple-blue bg-transparent px-[22px] py-3 text-[17px] font-normal leading-[1.18] text-apple-blue transition duration-200 ease-out hover:bg-apple-blue hover:text-white active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-apple-blue/30;
+    @apply inline-flex items-center justify-center gap-1 rounded-full border border-apple-blue bg-transparent px-[18px] py-2 text-sm font-normal leading-[1.29] text-apple-blue transition duration-200 ease-out hover:bg-apple-blue hover:text-white active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-apple-blue/30;
   }
   .btn-apple-sm {
-    @apply inline-flex items-center justify-center rounded-full bg-apple-blue px-3 py-1 text-xs font-normal text-white transition-colors duration-200 hover:bg-apple-blue-hover active:scale-[0.98];
+    @apply inline-flex items-center justify-center rounded-full bg-apple-blue px-2.5 py-[3px] text-xs font-normal text-white transition-colors duration-200 hover:bg-apple-blue-hover active:scale-[0.98];
   }
   /* Frosted secondary pill for dark sections */
   .btn-apple-glass {
-    @apply inline-flex items-center justify-center gap-1 rounded-full bg-white/10 px-[22px] py-3 text-[17px] leading-[1.18] text-white backdrop-blur transition duration-200 ease-out hover:bg-white/20 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-1 rounded-full bg-white/10 px-[18px] py-2 text-sm leading-[1.29] text-white backdrop-blur transition duration-200 ease-out hover:bg-white/20 active:scale-[0.98];
   }
   /* Large Apple-style section headline */
   .headline-apple {

@@ -15,7 +15,7 @@ const EmployerBlock = ({ employer, current }: { employer: Employer; current: boo
         </p>
       </div>
       <span
-        className={`rounded-full px-4 py-1.5 text-sm font-semibold ${
+        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
           employer.type === 'Full-time' ? 'bg-white text-black' : 'bg-amber-400/20 text-amber-300'
         }`}
       >

@@ -18,7 +18,7 @@ const Tag: React.FC<TagProps> = ({ className = '', children, variant = 'containe
         : 'bg-apple-gray text-apple-ink border-transparent';
 
   return (
-    <span className={`inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-full border px-3.5 py-1.5 ${themeVariantClasses} ${className}`}>
+    <span className={`inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs ${themeVariantClasses} ${className}`}>
       {children}
     </span>
   );

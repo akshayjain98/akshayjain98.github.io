@@ -9,12 +9,12 @@ const About: React.FC = () => {
     <div className="flex flex-col lg:flex-row justify-between gap-10 sm:gap-12 lg:gap-12 xl:gap-20 py-10 sm:py-12 lg:py-20 items-center flex-1">
       <div className="flex-1 min-w-0 flex flex-col justify-center gap-6">
         <div className="flex flex-wrap items-center gap-3">
-          <Tag className="text-xs sm:text-sm !whitespace-normal" variant="outlined">
+          <Tag className="!whitespace-normal" variant="outlined">
             {headline}
           </Tag>
           {openTo && (
-            <span className="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-green-700">
-              <span aria-hidden className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-700">
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
               {openTo}
             </span>
           )}

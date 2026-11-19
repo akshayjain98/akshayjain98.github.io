@@ -14,7 +14,7 @@ const EngagementBadge: React.FC<{ engagement: Project['engagement']; dark?: bool
   const freelance = engagement !== 'Full-time';
   return (
     <span
-      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+      className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
         freelance
           ? 'bg-amber-400/20 text-amber-700'
           : dark
@@ -44,7 +44,7 @@ const ProjectCard: React.FC<{ project: Project; dark: boolean; onOpen: () => voi
         <span className={muted}>· {project.client}</span>
         <span className="ml-auto flex gap-2">
           {project.ongoing && (
-            <span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-600">Ongoing</span>
+            <span className="rounded-full bg-green-500/15 px-2 py-0.5 text-[11px] font-medium text-green-600">Ongoing</span>
           )}
           <EngagementBadge engagement={project.engagement} dark={dark} />
         </span>
@@ -151,7 +151,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
                 <EngagementBadge engagement={project.engagement} />
               </span>
               {project.ongoing && (
-                <span className="self-center rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-700">Ongoing</span>
+                <span className="self-center rounded-full bg-green-500/15 px-2 py-0.5 text-[11px] font-medium text-green-700">Ongoing</span>
               )}
             </div>
             <h2 id="project-modal-title" className="text-[28px] sm:text-[40px] font-semibold leading-[1.1] tracking-[-0.025em] mt-2">
@@ -214,7 +214,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="font-semibold">{c.area}</h3>
                     {c.layer && (
-                      <span className="rounded-full border border-gray-300 px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-gray-600">
+                      <span className="rounded-full border border-gray-300 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-gray-600">
                         {c.layer}
                       </span>
                     )}
@@ -311,7 +311,7 @@ export const Projects: React.FC<{ projects: Project[] }> = ({ projects }) => {
                 type="button"
                 aria-pressed={filter === f}
                 onClick={() => setFilter(f)}
-                className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 transition duration-200 ${
+                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-[13px] transition duration-200 ${
                   filter === f ? 'bg-white text-apple-ink shadow-[0_1px_4px_rgba(0,0,0,0.12)]' : 'text-apple-muted hover:text-apple-ink'
                 }`}
               >
