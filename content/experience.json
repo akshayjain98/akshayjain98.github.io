@@ -1,79 +1,106 @@
-{
-  "company": "La Net Team Software Solution Pvt. Ltd.",
-  "period": "Dec 2019 – Present",
-  "roles": [
-    {
-      "title": "Senior Full-Stack & AI Engineer | Technical Lead",
-      "period": "Jan 2024 – Present",
-      "summary": "Working across AI engineering, full-stack development and technical leadership, focusing on building scalable AI-powered applications and enterprise software products.",
-      "points": [
-        "Designing and developing AI-powered applications using Python, FastAPI, React, Next.js and TypeScript.",
-        "Building LLM-powered solutions using RAG, embeddings, vector search and OpenAI APIs.",
-        "Developing multi-agent AI workflows and orchestration pipelines for AI-powered application generation.",
-        "Contributing to AI product architecture, backend services, API integrations and database design.",
-        "Leading technical architecture and making key engineering decisions.",
-        "Mentoring junior developers, assigning tasks, conducting code reviews and guiding technical implementation.",
-        "Communicating directly with international clients, primarily from the US and UK.",
-        "Coordinating with business teams and product managers on requirements, effort estimation, timelines and project delivery."
-      ],
-      "keyProjects": [
-        "BuildIt (AI-powered no-code application generation platform)",
-        "AI Knowledge Assistant",
-        "Enterprise E-commerce Platforms"
-      ]
-    },
-    {
-      "title": "Full-Stack Developer | Client & Project Coordination",
-      "period": "Jan 2023 – Dec 2023",
-      "summary": "Expanded responsibilities beyond software development by taking ownership of client communication, technical discussions, project coordination and feature delivery while continuing hands-on development.",
-      "points": [
-        "Developed full-stack application features using Python, React and modern backend technologies.",
-        "Communicated directly with international clients, primarily from the US and UK.",
-        "Participated in requirement gathering and translated business requirements into technical tasks.",
-        "Coordinated with business teams, developers and product managers.",
-        "Conducted code reviews and supported developers with technical implementation.",
-        "Assigned development tasks and monitored progress to ensure timely delivery.",
-        "Participated in technical discussions, solution design and effort estimation.",
-        "Reported project updates, challenges and delivery status to product management."
-      ],
-      "keyProjects": [
-        "Data Labeling Tool",
-        "DoodyCalls",
-        "Enterprise E-commerce Platform"
-      ]
-    },
-    {
-      "title": "Junior Python Developer",
-      "period": "Jun 2020 – Dec 2022",
-      "summary": "Moved from the internship into a full-time development role, specializing in Python backend development and contributing to live client projects.",
-      "points": [
-        "Developed and maintained backend applications using Python, Flask and Django.",
-        "Designed and integrated REST APIs and database operations.",
-        "Worked with PostgreSQL and application authentication and authorization.",
-        "Developed new features, fixed bugs and maintained existing application functionality.",
-        "Collaborated with frontend developers to integrate backend services with React applications.",
-        "Participated in debugging, testing and production issue resolution.",
-        "Worked with senior developers and project teams to understand requirements and deliver solutions."
-      ],
-      "keyProjects": [
-        "Data Labeling Tool",
-        "Other client-based software applications"
-      ]
-    },
-    {
-      "title": "Software Developer Intern",
-      "period": "Dec 2019 – May 2020",
-      "summary": "Started my professional journey as a software developer intern, gaining practical experience in software development, Python programming and real-world application development.",
-      "points": [
-        "Learned Python programming and backend development fundamentals.",
-        "Assisted in developing application features and implementing business logic.",
-        "Worked with databases, APIs, debugging and application testing.",
-        "Collaborated with senior developers to understand project requirements and development workflows.",
-        "Gained hands-on exposure to full-stack development and software engineering practices."
-      ],
-      "keyProjects": [
-        "Data Labeling Tool"
-      ]
-    }
-  ]
-}
+[
+  {
+    "company": "La Net Team Software Solution Pvt. Ltd.",
+    "period": "Dec 2019 – Present",
+    "roles": [
+      {
+        "title": "Senior Full-Stack & AI Engineer | Technical Lead",
+        "period": "Jan 2024 – Present",
+        "summary": "Working across AI engineering, full-stack development and technical leadership, focusing on building scalable AI-powered applications and enterprise software products.",
+        "points": [
+          "Designing and developing AI-powered applications using Python, FastAPI, React, Next.js and TypeScript.",
+          "Building LLM-powered solutions using RAG, embeddings, vector search and OpenAI APIs.",
+          "Shipping AI features in production, such as a streaming chat assistant over store data and GPT-tailored resume generation.",
+          "Contributing to AI product architecture, backend services, API integrations and database design.",
+          "Leading technical architecture and making key engineering decisions.",
+          "Mentoring junior developers, assigning tasks, conducting code reviews and guiding technical implementation.",
+          "Communicating directly with international clients, primarily from the US and UK.",
+          "Coordinating with business teams and product managers on requirements, effort estimation, timelines and project delivery."
+        ],
+        "keyProjects": [
+          "AI Knowledge Assistant",
+          "AI Job-Search Platform",
+          "Commerce Analytics SaaS",
+          "Enterprise E-commerce Platform"
+        ]
+      },
+      {
+        "title": "Full-Stack Developer | Client & Project Coordination",
+        "period": "Jan 2023 – Dec 2023",
+        "summary": "Expanded responsibilities beyond software development by taking ownership of client communication, technical discussions, project coordination and feature delivery while continuing hands-on development.",
+        "points": [
+          "Developed full-stack application features using Python, React and modern backend technologies.",
+          "Communicated directly with international clients, primarily from the US and UK.",
+          "Participated in requirement gathering and translated business requirements into technical tasks.",
+          "Coordinated with business teams, developers and product managers.",
+          "Conducted code reviews and supported developers with technical implementation.",
+          "Assigned development tasks and monitored progress to ensure timely delivery.",
+          "Participated in technical discussions, solution design and effort estimation.",
+          "Reported project updates, challenges and delivery status to product management."
+        ],
+        "keyProjects": [
+          "Data Labeling Tool",
+          "Enterprise E-commerce Platform",
+          "Commerce Analytics SaaS"
+        ]
+      },
+      {
+        "title": "Junior Python Developer",
+        "period": "Jun 2020 – Dec 2022",
+        "summary": "Moved from the internship into a full-time development role, specializing in Python backend development on live client projects, and from 2021 taking on frontend work as well.",
+        "points": [
+          "Developed and maintained backend applications using Python, Flask and Django.",
+          "Designed and integrated REST APIs and database operations.",
+          "Worked with PostgreSQL and application authentication and authorization.",
+          "Developed new features, fixed bugs and maintained existing application functionality.",
+          "Expanded into frontend from 2021: led the Data Labeling Tool’s migration from server-rendered templates to a React/Redux app and built its Visual NER (PDF) annotation features.",
+          "Participated in debugging, testing and production issue resolution.",
+          "Worked with senior developers and project teams to understand requirements and deliver solutions."
+        ],
+        "keyProjects": [
+          "Data Labeling Tool",
+          "Other client-based software applications"
+        ]
+      },
+      {
+        "title": "Software Developer Intern",
+        "period": "Dec 2019 – May 2020",
+        "summary": "Started my professional journey as a software developer intern, gaining practical experience in software development, Python programming and real-world application development.",
+        "points": [
+          "Learned Python programming and backend development fundamentals.",
+          "Assisted in developing application features and implementing business logic.",
+          "Worked with databases, APIs, debugging and application testing.",
+          "Collaborated with senior developers to understand project requirements and development workflows.",
+          "Gained hands-on exposure to full-stack development and software engineering practices."
+        ],
+        "keyProjects": [
+          "Data Labeling Tool"
+        ]
+      }
+    ],
+    "type": "Full-time"
+  },
+  {
+    "company": "Independent / Freelance",
+    "type": "Part-time",
+    "period": "Jun 2023 – Feb 2026",
+    "roles": [
+      {
+        "title": "Freelance Full-Stack & AI Engineer",
+        "period": "Jun 2023 – Feb 2026",
+        "summary": "Part-time client work alongside my full-time role, delivering full-stack, data and AI features for clients in the US and India.",
+        "points": [
+          "Built AI-driven application generation with Gemini and multi-agent workflows for a no-code platform, plus RBAC and Stripe subscriptions.",
+          "Wrote complex Amazon Redshift SQL and Python data workflows (S3 → Redshift) for business reporting.",
+          "Built Django/PostgreSQL APIs, React/Redux dashboards and automated S3 + email report delivery for an operations platform.",
+          "Worked directly with founders and client stakeholders on requirements, technical decisions and delivery."
+        ],
+        "keyProjects": [
+          "BuildIt",
+          "Junkluggers",
+          "DoodyCalls"
+        ]
+      }
+    ]
+  }
+]

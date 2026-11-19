@@ -2,8 +2,14 @@
   "slug": "commerce-analytics-saas",
   "title": "Multi-Tenant Commerce Analytics SaaS",
   "tagline": "LTV, cohorts, finance & marketing ROI for Shopify merchants",
-  "client": "SaaS product",
+  "client": "SaaS product (USA)",
   "period": "Oct 2023 – Present",
+  "engagement": "Full-time",
+  "categories": [
+    "Full-stack",
+    "Data",
+    "AI"
+  ],
   "ongoing": true,
   "role": "Founding & Lead Full-Stack Engineer",
   "summary": "A multi-tenant analytics platform for Shopify merchants combining store, accounting and ad data into customer LTV, cohorts, financial reports, marketing ROI and an AI chat assistant. Built from the first commit and led for 3+ years.",

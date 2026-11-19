@@ -4,8 +4,12 @@
   "tagline": "E-commerce experience through strategic page enhancements",
   "client": "Client: USA",
   "period": "Jun 2023 – Present",
+  "engagement": "Full-time",
+  "categories": [
+    "Frontend"
+  ],
   "ongoing": true,
-  "role": "Full-Stack Developer",
+  "role": "Full-Stack Developer → Module Lead",
   "summary": "Product detail pages, product grids and category grids for a large-scale e-commerce platform: pixel-accurate, reusable React and Next.js components built from Figma and Zeplin designs.",
   "overview": [
     "Frontend engineering for a large-scale e-commerce platform, focused on the pages that drive conversion: Product Detail Pages, Product Grids and Category Grids.",

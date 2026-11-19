@@ -4,6 +4,10 @@
   "tagline": "Efficiency and sustainability in pet waste management solutions",
   "client": "Client: USA",
   "period": "Jun 2023 – Dec 2023",
+  "engagement": "Part-time · Freelance",
+  "categories": [
+    "Full-stack"
+  ],
   "role": "Full-Stack Developer",
   "summary": "Backend and frontend features for a pet waste management and operations platform: Django APIs, React dashboards, filtering and exports, and automated report delivery via S3 and email.",
   "overview": [

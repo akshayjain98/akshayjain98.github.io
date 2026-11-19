@@ -8,6 +8,7 @@ import type { Experience, Profile, Project, Skills } from './types';
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
 function readJson(file: string): Record<string, unknown> {
+  // JSON files may hold an object or a list; callers cast to the expected shape.
   const full = path.join(CONTENT_DIR, file);
   try {
     return JSON.parse(fs.readFileSync(full, 'utf8'));
@@ -28,11 +29,14 @@ export function getProfile(): Profile {
 }
 
 export function getExperience(): Experience {
-  const data = readJson('experience.json');
-  requireFields('experience.json', data, ['company', 'period', 'roles']);
-  (data.roles as Record<string, unknown>[]).forEach((r, i) =>
-    requireFields(`experience.json (roles[${i}])`, r, ['title', 'period', 'summary', 'points', 'keyProjects']),
-  );
+  const data = readJson('experience.json') as unknown as Record<string, unknown>[];
+  if (!Array.isArray(data)) throw new Error('content/experience.json: expected a list of employers');
+  data.forEach((e, i) => {
+    requireFields(`experience.json [${i}]`, e, ['company', 'type', 'period', 'roles']);
+    (e.roles as Record<string, unknown>[]).forEach((r, j) =>
+      requireFields(`experience.json [${i}].roles[${j}]`, r, ['title', 'period', 'summary', 'points', 'keyProjects']),
+    );
+  });
   return data as unknown as Experience;
 }
 
@@ -50,7 +54,7 @@ export function getProjects(): Project[] {
     .map((f) => {
       const file = `projects/${f}`;
       const data = readJson(file);
-      requireFields(file, data, ['slug', 'title', 'tagline', 'client', 'period', 'role', 'summary', 'overview', 'tech', 'contributions', 'achievements']);
+      requireFields(file, data, ['slug', 'title', 'tagline', 'client', 'period', 'engagement', 'categories', 'role', 'summary', 'overview', 'tech', 'contributions', 'achievements']);
       return data as unknown as Project;
     });
 }

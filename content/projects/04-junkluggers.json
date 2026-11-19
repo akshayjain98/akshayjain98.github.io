@@ -4,6 +4,11 @@
   "tagline": "Data-driven decision making and operational efficiency",
   "client": "Client: USA",
   "period": "Jan 2024 – Mar 2024",
+  "engagement": "Part-time · Freelance",
+  "categories": [
+    "Data",
+    "Backend"
+  ],
   "role": "Database and Backend Developer",
   "summary": "Reporting and data-processing workflows on AWS for a US service business: complex Redshift SQL, S3-to-Redshift loading, and Python report generation.",
   "overview": [

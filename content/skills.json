@@ -4,7 +4,7 @@
     "items": [
       "Python",
       "FastAPI",
-      "Django",
+      "Django / DRF",
       "Flask",
       "REST APIs",
       "SQLAlchemy"
@@ -16,10 +16,22 @@
       "React.js",
       "Next.js",
       "TypeScript",
-      "Redux",
+      "Redux / Redux Toolkit",
       "MobX",
       "Tailwind",
       "Ant Design"
+    ]
+  },
+  {
+    "group": "AI / LLM",
+    "items": [
+      "OpenAI",
+      "Gemini",
+      "RAG",
+      "Embeddings",
+      "Vector Search (pgvector)",
+      "Multi-Agent Workflows",
+      "Prompt Engineering"
     ]
   },
   {
@@ -27,6 +39,7 @@
     "items": [
       "PostgreSQL",
       "Amazon Redshift",
+      "Redis",
       "MongoDB",
       "Firebase / Firestore",
       "Data Modeling",
@@ -35,20 +48,11 @@
     ]
   },
   {
-    "group": "AI / LLM",
-    "items": [
-      "LLM APIs",
-      "RAG",
-      "Embeddings",
-      "Vector Search",
-      "Prompt Engineering",
-      "AI Workflows"
-    ]
-  },
-  {
     "group": "Cloud & DevOps",
     "items": [
       "AWS (EC2, S3)",
+      "GCP (App Engine, Cloud Tasks, Cloud Build)",
+      "Azure",
       "Docker",
       "CI/CD",
       "Linux"
@@ -63,6 +67,16 @@
       "OAuth 2.0",
       "OIDC",
       "Firebase Auth"
+    ]
+  },
+  {
+    "group": "Integrations",
+    "items": [
+      "Stripe",
+      "Shopify",
+      "QuickBooks",
+      "Google Ads",
+      "Meta Ads"
     ]
   },
   {

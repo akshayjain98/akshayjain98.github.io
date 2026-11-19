@@ -4,6 +4,11 @@
   "tagline": "Enterprise AI assistant using a reusable RAG framework",
   "client": "Client: UK",
   "period": "Apr 2025 – Present",
+  "engagement": "Full-time",
+  "categories": [
+    "AI",
+    "Full-stack"
+  ],
   "ongoing": true,
   "role": "Senior Full-Stack Developer / Module Lead",
   "summary": "An enterprise AI assistant that answers questions over domain-specific company knowledge, built on a reusable RAG framework with role-based access to what each user may retrieve.",

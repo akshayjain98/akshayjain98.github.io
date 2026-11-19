@@ -35,7 +35,7 @@
     "paragraphs": [
       "I started in December 2019 as a software developer intern, learning Python and backend fundamentals on a live enterprise data labeling tool. In June 2020 I joined full-time as a Python developer, building Flask and Django APIs, PostgreSQL data models and Keycloak authentication. I then moved into the frontend too, and finished as the top contributor out of 75 developers.",
       "In 2023 my role grew past code. I started working directly with US and UK clients, gathering requirements, estimating effort, assigning tasks and reviewing code, while still building features myself.",
-      "Since January 2024 I have been a senior full-stack and AI engineer and technical lead. I build LLM products with RAG, embeddings and multi-agent workflows, make the architecture calls, and mentor developers through delivery."
+      "Since January 2024 I have been a senior full-stack and AI engineer and technical lead. I build LLM products with RAG, embeddings and multi-agent workflows, make the architecture calls, and mentor developers through delivery. Alongside my full-time role, I take on part-time freelance work: an agentic no-code platform, Redshift reporting pipelines and an operations platform."
     ],
     "quote": "Own the problem end-to-end: from the first commit to the release, and the people in between."
   },
@@ -49,5 +49,7 @@
     "First rank in the Integrated MCA degree; awarded the Mahendra Govind Gold Medal by Uka Tarsadia University.",
     "Recognized as Best Student of the 5-year Integrated MCA programme (batch year 2016–2017).",
     "First rank at intercollegiate competitions Impetus 2018 (Byte-coder) and Impetus 2017 (Net Rising)."
-  ]
+  ],
+  "photo": "",
+  "openTo": ""
 }

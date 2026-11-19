@@ -3,12 +3,17 @@
   "title": "Data Labeling Tool",
   "tagline": "Image and text-based document annotation tool",
   "client": "Client: USA",
-  "period": "Feb 2020 – May 2023",
+  "period": "Dec 2019 – May 2023",
+  "engagement": "Full-time",
+  "categories": [
+    "Full-stack",
+    "Backend"
+  ],
   "role": "Full-Stack Developer (backend first, then frontend)",
   "summary": "An enterprise annotation platform for text, PDFs and images (NLP and Visual NER). I started on the backend (Flask/Django APIs, PostgreSQL, Keycloak IAM) and later took on the frontend as well, including the move to React. Top contributor out of 75 developers.",
   "overview": [
     "An enterprise data labeling platform. Teams use it to annotate text, PDFs and images for NLP and Visual NER, manage annotators and reviewers, and train or pre-annotate with pretrained NLP models.",
-    "I joined on the backend: Flask and Django REST APIs, SQLAlchemy models and migrations, PostgreSQL design for labeling workflows, audit logs and reporting, and Keycloak authentication and RBAC. I then took on the frontend as well, leading the migration from server-rendered templates to a React/Redux app and building Visual NER annotation. By the end I was the top committer out of 75 contributors, working across backend, frontend, security, testing and deployment."
+    "I was assigned to the project during my internship and started on the backend: Flask and Django REST APIs, SQLAlchemy models and migrations, PostgreSQL design for labeling workflows, audit logs and reporting, and Keycloak authentication and RBAC. I then took on the frontend as well, leading the migration from server-rendered templates to a React/Redux app and building Visual NER annotation. By the end I was the top committer out of 75 contributors, working across backend, frontend, security, testing and deployment."
   ],
   "workSplit": [
     {

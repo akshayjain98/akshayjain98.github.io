@@ -12,12 +12,16 @@ export interface ContributionArea {
   points: string[];
 }
 
+export type ProjectCategory = 'AI' | 'Full-stack' | 'Backend' | 'Frontend' | 'Data';
+
 export interface Project {
   slug: string;
   title: string;
   tagline: string;
   client: string;
   period: string;
+  engagement: 'Full-time' | 'Part-time · Freelance';
+  categories: ProjectCategory[];
   ongoing?: boolean;
   role: string;
   summary: string;
@@ -36,6 +40,12 @@ export interface Profile {
   title: string;
   headline: string;
   location: string;
+  /** Path under /public, e.g. "/profile.jpg". Empty = show the stats card only. */
+  photo?: string;
+  /** Short availability line shown in the hero. Empty = hidden. */
+  openTo?: string;
+  /** Public URL of the deployed site, used for link previews. */
+  siteUrl?: string;
   links: { linkedin: string; github: string; stackoverflow: string; medium: string };
   summary: string;
   summaryDetail: string;
@@ -53,10 +63,13 @@ export interface Role {
   keyProjects: string[];
 }
 
-export interface Experience {
+export interface Employer {
   company: string;
+  type: 'Full-time' | 'Part-time';
   period: string;
   roles: Role[];
 }
+
+export type Experience = Employer[];
 
 export type Skills = { group: string; items: string[] }[];

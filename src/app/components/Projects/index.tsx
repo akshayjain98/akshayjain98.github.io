@@ -1,64 +1,81 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import type { Project } from '@/lib/types';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { Project, ProjectCategory } from '@/lib/types';
 import { Heading } from '../ui/Heading';
 import Tag from '../ui/Tag';
 
-const MAX_CARD_TECH = 6;
+const MAX_CARD_TECH = 5;
+const FILTERS: ('All' | ProjectCategory)[] = ['All', 'AI', 'Full-stack', 'Backend', 'Frontend', 'Data'];
+const HASH_PREFIX = '#project=';
 
-interface ProjectCardProps {
-  project: Project;
-  theme: 'dark' | 'light';
-  onOpen: () => void;
-}
+const EngagementBadge: React.FC<{ engagement: Project['engagement']; dark?: boolean }> = ({ engagement, dark }) => {
+  const freelance = engagement !== 'Full-time';
+  return (
+    <span
+      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+        freelance
+          ? 'bg-amber-400/20 text-amber-700'
+          : dark
+            ? 'bg-white/10 text-gray-200'
+            : 'bg-black/5 text-gray-700'
+      } ${freelance && dark ? '!text-amber-300' : ''}`}
+    >
+      {engagement}
+    </span>
+  );
+};
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme, onOpen }) => {
-  const dark = theme === 'dark';
+const ProjectCard: React.FC<{ project: Project; dark: boolean; onOpen: () => void }> = ({ project, dark, onOpen }) => {
   const extra = project.tech.length - MAX_CARD_TECH;
+  const muted = dark ? 'text-gray-400' : 'text-gray-500';
   return (
     <button
       type="button"
       onClick={onOpen}
       aria-haspopup="dialog"
-      className={`group w-full text-left flex flex-col md:flex-row gap-4 md:gap-8 p-6 sm:p-10 lg:p-12 rounded-3xl transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 ${
+      className={`group h-full w-full text-left flex flex-col gap-5 p-6 sm:p-8 rounded-3xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 ${
         dark ? 'bg-black text-white' : 'bg-gray-100 text-black'
       }`}
     >
-      <div className="md:w-1/4 flex flex-col gap-2 text-sm">
-        <p className="font-semibold">{project.period}</p>
-        <p className={dark ? 'text-gray-400' : 'text-gray-500'}>{project.client}</p>
-        {project.ongoing && (
-          <span className="mt-1 w-fit rounded-full bg-green-500/15 text-green-600 px-3 py-1 text-xs font-semibold">Ongoing</span>
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <span className="font-semibold">{project.period}</span>
+        <span className={muted}>· {project.client}</span>
+        <span className="ml-auto flex gap-2">
+          {project.ongoing && (
+            <span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-600">Ongoing</span>
+          )}
+          <EngagementBadge engagement={project.engagement} dark={dark} />
+        </span>
+      </div>
+      <div>
+        <h3 className="text-2xl sm:text-3xl font-bold">{project.title}</h3>
+        <p className={`mt-1 ${muted}`}>{project.role}</p>
+      </div>
+      <p className={dark ? 'text-gray-200' : 'text-gray-700'}>{project.summary}</p>
+      <div className="mt-auto flex flex-wrap gap-2 text-sm">
+        {project.tech.slice(0, MAX_CARD_TECH).map((tech) => (
+          <Tag key={tech} theme={dark ? 'dark' : 'light'}>
+            {tech}
+          </Tag>
+        ))}
+        {extra > 0 && (
+          <Tag theme={dark ? 'dark' : 'light'} variant="outlined">
+            +{extra} more
+          </Tag>
         )}
       </div>
-      <div className="flex flex-col gap-5 flex-1 min-w-0">
-        <div>
-          <h3 className="text-2xl font-bold">{project.title}</h3>
-          <p className={`mt-1 ${dark ? 'text-gray-400' : 'text-gray-500'}`}>{project.role}</p>
-        </div>
-        <p>{project.summary}</p>
-        <div className="flex flex-wrap gap-2 text-sm">
-          {project.tech.slice(0, MAX_CARD_TECH).map((tech) => (
-            <Tag key={tech} theme={theme}>
-              {tech}
-            </Tag>
-          ))}
-          {extra > 0 && (
-            <Tag theme={theme} variant="outlined">
-              +{extra} more
-            </Tag>
-          )}
-        </div>
-        <span className="font-semibold text-sm underline-offset-4 group-hover:underline">View full details →</span>
-      </div>
+      <span className="font-semibold text-sm">
+        View case study <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+      </span>
     </button>
   );
 };
 
 const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
@@ -73,6 +90,16 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
       previous?.focus();
     };
   }, [onClose]);
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard blocked: the URL bar already holds the link */
+    }
+  };
 
   return (
     <motion.div
@@ -94,16 +121,25 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between gap-4 bg-white/95 backdrop-blur px-6 sm:px-10 py-4 border-b border-gray-200">
-          <p className="text-sm font-semibold uppercase tracking-wide">Project details</p>
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            aria-label="Close project details"
-            className="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-semibold hover:bg-black hover:text-white"
-          >
-            Close ✕
-          </button>
+          <p className="text-sm font-semibold uppercase tracking-wide">Case study</p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={copyLink}
+              className="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-semibold hover:border-black"
+            >
+              {copied ? 'Link copied ✓' : 'Copy link'}
+            </button>
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={onClose}
+              aria-label="Close project details"
+              className="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-semibold hover:bg-black hover:text-white"
+            >
+              Close ✕
+            </button>
+          </div>
         </div>
 
         <div className="px-6 sm:px-10 py-8 flex flex-col gap-10">
@@ -111,7 +147,12 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
             <div className="flex flex-wrap gap-2 text-sm">
               <Tag variant="outlined">{project.period}</Tag>
               <Tag variant="outlined">{project.client}</Tag>
-              {project.ongoing && <Tag className="!bg-green-500/15 !border-transparent text-green-700">Ongoing</Tag>}
+              <span className="self-center">
+                <EngagementBadge engagement={project.engagement} />
+              </span>
+              {project.ongoing && (
+                <span className="self-center rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-700">Ongoing</span>
+              )}
             </div>
             <h2 id="project-modal-title" className="text-3xl sm:text-4xl font-bold mt-2">
               {project.title}
@@ -190,7 +231,9 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
             <ul className="flex flex-col gap-2">
               {project.achievements.map((a) => (
                 <li key={a} className="flex gap-3">
-                  <span aria-hidden className="text-green-600 font-bold">✓</span>
+                  <span aria-hidden className="text-green-600 font-bold">
+                    ✓
+                  </span>
                   <span>{a}</span>
                 </li>
               ))}
@@ -215,26 +258,80 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
 
 export const Projects: React.FC<{ projects: Project[] }> = ({ projects }) => {
   const [active, setActive] = useState<Project | null>(null);
-  const close = useCallback(() => setActive(null), []);
+  const [filter, setFilter] = useState<(typeof FILTERS)[number]>('All');
+  const reduce = useReducedMotion();
+
+  // Deep links: /#project=<slug> opens that case study, so a single project can be shared.
+  useEffect(() => {
+    const sync = () => {
+      const hash = window.location.hash;
+      const slug = hash.startsWith(HASH_PREFIX) ? decodeURIComponent(hash.slice(HASH_PREFIX.length)) : null;
+      setActive(slug ? (projects.find((p) => p.slug === slug) ?? null) : null);
+    };
+    sync();
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, [projects]);
+
+  const open = (p: Project) => {
+    history.replaceState(null, '', `${HASH_PREFIX}${p.slug}`);
+    setActive(p);
+  };
+  const close = useCallback(() => {
+    history.replaceState(null, '', '#projects');
+    setActive(null);
+  }, []);
+
+  const visible = useMemo(
+    () => (filter === 'All' ? projects : projects.filter((p) => p.categories.includes(filter))),
+    [filter, projects],
+  );
 
   return (
-    <div className="flex flex-col py-20 lg:py-28 gap-12">
-      <div className="flex flex-col gap-3">
-        <Heading>My Projects</Heading>
-        <p className="text-gray-500 max-w-2xl">
-          A selection of client and product work. Select a project to see the full scope, my contributions and the numbers behind them.
-        </p>
+    <div className="flex flex-col py-20 lg:py-28 gap-10">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div className="flex flex-col gap-3">
+          <Heading>My Projects</Heading>
+          <p className="text-3xl sm:text-4xl font-semibold max-w-2xl leading-tight">Selected work, from first commit to production.</p>
+          <p className="text-gray-500 max-w-2xl">Open any project for the full case study: scope, my contributions and the numbers behind them.</p>
+        </div>
+        <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2 text-sm font-semibold">
+          {FILTERS.map((f) => {
+            const count = f === 'All' ? projects.length : projects.filter((p) => p.categories.includes(f)).length;
+            return (
+              <button
+                key={f}
+                type="button"
+                aria-pressed={filter === f}
+                onClick={() => setFilter(f)}
+                className={`rounded-full border px-4 py-2 transition-colors ${
+                  filter === f ? 'bg-black text-white border-black' : 'border-gray-300 hover:border-black'
+                }`}
+              >
+                {f} <span className="text-gray-400">{count}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <div className="flex flex-col gap-6 lg:gap-10">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            theme={index % 2 === 0 ? 'dark' : 'light'}
-            onOpen={() => setActive(project)}
-          />
-        ))}
-      </div>
+
+      <motion.div layout={!reduce} className="grid gap-6 lg:grid-cols-2">
+        <AnimatePresence mode="popLayout">
+          {visible.map((project, index) => (
+            <motion.div
+              key={project.slug}
+              layout={!reduce}
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? undefined : { opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ProjectCard project={project} dark={index % 4 === 0 || index % 4 === 3} onOpen={() => open(project)} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
       <AnimatePresence>{active && <ProjectModal key={active.slug} project={active} onClose={close} />}</AnimatePresence>
     </div>
   );

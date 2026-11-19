@@ -4,6 +4,11 @@
   "tagline": "Semantic job matching and GPT-tailored resumes",
   "client": "Client: USA",
   "period": "Jul 2024 – Jan 2025",
+  "engagement": "Full-time",
+  "categories": [
+    "AI",
+    "Backend"
+  ],
   "role": "Backend Engineer (Python / Django)",
   "summary": "An AI job-search platform that ingests listings daily, enriches them with OpenAI, matches jobs semantically with pgvector, and generates job-specific resumes as PDFs.",
   "overview": [

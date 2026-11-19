@@ -16,3 +16,16 @@ body {
   background: var(--background);
   font-family: var(--font-poppins), 'Poppins', sans-serif;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm;
+  }
+}
