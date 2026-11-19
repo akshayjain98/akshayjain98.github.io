@@ -3,9 +3,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PrintButton } from './PrintButton';
 
-// A print-ready resume generated from /content, so it never drifts from the site.
-// "Download PDF" opens the browser's print dialog (Save as PDF).
-
 export function generateMetadata(): Metadata {
   const { firstName, lastName, title } = getProfile();
   return { title: 'Resume', description: `${firstName} ${lastName}, ${title}` };

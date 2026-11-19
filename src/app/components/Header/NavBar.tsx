@@ -15,7 +15,6 @@ export const NavBar: React.FC<{ firstName: string; lastName: string }> = ({ firs
   const [active, setActive] = useState<string>('');
   const [open, setOpen] = useState(false);
 
-  // Highlight the section that is currently in the middle of the viewport.
   useEffect(() => {
     const sections = navItems
       .map((n) => document.getElementById(n.id))

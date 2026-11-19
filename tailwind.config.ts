@@ -11,7 +11,6 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Apple-style palette
         apple: {
           ink: "#1d1d1f",
           muted: "#6e6e73",

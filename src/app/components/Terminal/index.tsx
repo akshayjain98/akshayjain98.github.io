@@ -3,8 +3,6 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { run, suggest, type Line, type TerminalData, type Tone } from './commands';
 
-// A small "/"-command terminal for the hero. Everything runs in the browser from build-time data.
-
 interface Entry {
   id: number;
   input?: string;
@@ -83,7 +81,6 @@ const StreamedLines: React.FC<{ lines: Line[]; shown: number }> = ({ lines, show
   return <>{out}</>;
 };
 
-/** Arrows pointing out (expand) or in (collapse). */
 const ResizeIcon: React.FC<{ expanded: boolean }> = ({ expanded }) => (
   <svg aria-hidden viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
     {expanded ? <path d="M6.5 2v4.5H2M9.5 14V9.5H14M2 2l4.5 4.5M14 14l-4.5-4.5" /> : <path d="M10 2h4v4M6 14H2v-4M14 2 9 7M2 14l5-5" />}
@@ -133,7 +130,6 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
 
   useEffect(() => setSel(0), [input]);
 
-  // Drive the stream with requestAnimationFrame. Time-based, so it stays smooth on slow devices.
   const streamId = stream?.id;
   const streamTotal = stream?.total ?? 0;
   useEffect(() => {
@@ -148,7 +144,6 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
     const tick = (now: number) => {
       const t = now - start;
       if (t >= duration) return setStream(null);
-      // Ease out: starts quick, settles at the end, like tokens arriving.
       const p = t < 0 ? -1 : Math.floor((1 - Math.pow(1 - t / duration, 2)) * streamTotal);
       setStream((s) => (s && s.id === streamId && s.shown !== p ? { ...s, shown: p } : s));
       raf = requestAnimationFrame(tick);
@@ -165,7 +160,6 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
     if (el) el.scrollTop = el.scrollHeight;
   }, [entries, stream?.shown, expanded]);
 
-  // Press "/" anywhere on the page to jump into the terminal.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
@@ -208,7 +202,6 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
     inputRef.current?.focus();
   };
 
-  // Picking a suggestion: commands that take an argument get completed, the rest run straight away.
   const pick = (value: string) => (value.endsWith(' ') ? complete(value) : execute(value));
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -352,7 +345,7 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
           <span aria-hidden className="h-3 w-3 rounded-full bg-[#ff5f57]" />
           <span aria-hidden className="h-3 w-3 rounded-full bg-[#febc2e]" />
           {onToggleExpand ? (
-            // Green "zoom" light, like macOS. The labelled button on the right is the primary control.
+            // Decorative duplicate of the labelled expand button on the right.
             <button type="button" tabIndex={-1} aria-hidden title={resizeLabel} onClick={toggleExpand} className="h-3 w-3 rounded-full bg-[#28c840] hover:brightness-110" />
           ) : (
             <span aria-hidden className="h-3 w-3 rounded-full bg-[#28c840]" />
