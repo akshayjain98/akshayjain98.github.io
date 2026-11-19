@@ -1,0 +1,80 @@
+[
+  {
+    "group": "Backend",
+    "items": [
+      "Python",
+      "FastAPI",
+      "Django",
+      "Flask",
+      "REST APIs",
+      "SQLAlchemy"
+    ]
+  },
+  {
+    "group": "Frontend",
+    "items": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Redux",
+      "MobX",
+      "Tailwind",
+      "Ant Design"
+    ]
+  },
+  {
+    "group": "Data",
+    "items": [
+      "PostgreSQL",
+      "Amazon Redshift",
+      "MongoDB",
+      "Firebase / Firestore",
+      "Data Modeling",
+      "Query Optimization",
+      "Apache Airflow"
+    ]
+  },
+  {
+    "group": "AI / LLM",
+    "items": [
+      "LLM APIs",
+      "RAG",
+      "Embeddings",
+      "Vector Search",
+      "Prompt Engineering",
+      "AI Workflows"
+    ]
+  },
+  {
+    "group": "Cloud & DevOps",
+    "items": [
+      "AWS (EC2, S3)",
+      "Docker",
+      "CI/CD",
+      "Linux"
+    ]
+  },
+  {
+    "group": "Auth & Security",
+    "items": [
+      "Keycloak",
+      "RBAC",
+      "IAM",
+      "OAuth 2.0",
+      "OIDC",
+      "Firebase Auth"
+    ]
+  },
+  {
+    "group": "Testing & Tools",
+    "items": [
+      "Pytest",
+      "Selenium",
+      "Storybook",
+      "Git",
+      "Jira",
+      "Postman",
+      "Figma"
+    ]
+  }
+]

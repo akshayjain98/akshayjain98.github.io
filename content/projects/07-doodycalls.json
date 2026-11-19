@@ -1,0 +1,47 @@
+{
+  "slug": "doodycalls",
+  "title": "DoodyCalls",
+  "tagline": "Efficiency and sustainability in pet waste management solutions",
+  "client": "Client: USA",
+  "period": "Jun 2023 – Dec 2023",
+  "role": "Full-Stack Developer",
+  "summary": "Backend and frontend features for a pet waste management and operations platform: Django APIs, React dashboards, filtering and exports, and automated report delivery via S3 and email.",
+  "overview": [
+    "A pet waste management and operations platform for a US business. I built features across the stack to support day-to-day operational workflows and reporting.",
+    "The biggest win was automation: reports are generated, uploaded to Amazon S3 and emailed automatically, removing a recurring manual task for the operations team."
+  ],
+  "tech": [
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "React.js",
+    "Redux",
+    "Ant Design",
+    "AWS S3"
+  ],
+  "contributions": [
+    {
+      "area": "Backend",
+      "points": [
+        "Built REST APIs and backend features with Django and PostgreSQL to support operational workflows."
+      ]
+    },
+    {
+      "area": "Frontend",
+      "points": [
+        "Developed responsive UI components with React.js, Redux and Ant Design."
+      ]
+    },
+    {
+      "area": "Reporting & automation",
+      "points": [
+        "Implemented reporting, data filtering and export functionality.",
+        "Built workflows that generate reports and upload them to Amazon S3.",
+        "Implemented email automation for report distribution."
+      ]
+    }
+  ],
+  "achievements": [
+    "Reduced manual reporting effort through automated report generation and delivery."
+  ]
+}

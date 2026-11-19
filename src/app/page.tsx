@@ -1,27 +1,47 @@
 import About from './components/About';
+import { Contact } from './components/Contact';
+import { Experience, Skills } from './components/Experience';
 import Header from './components/Header';
 import { Projects } from './components/Projects';
 import { Story } from './components/Story';
+import { getProjects } from '@/lib/content';
+
+const container = 'w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-16';
 
 export default function Home() {
   return (
-    <>
-      <div className='w-full flex justify-center h-[100vh] text-black bg-white'>
-        <div className='w-[1600px] flex flex-col'>
+    <main>
+      <section id="top" className="bg-white text-black">
+        <div className={`${container} min-h-screen flex flex-col`}>
           <Header />
           <About />
         </div>
-      </div>
-      <div className='w-full flex justify-center bg-black text-white  h-[100vh]'>
-        <div className='w-[1600px] flex flex-col'>
+      </section>
+      <section id="story" className="bg-black text-white scroll-mt-4">
+        <div className={container}>
           <Story />
         </div>
-      </div>
-      <div className='w-full flex justify-center bg-white text-black  h-[100vh]'>
-        <div className='w-[1600px] flex flex-col'>
-          <Projects />
+      </section>
+      <section id="projects" className="bg-white text-black scroll-mt-4">
+        <div className={container}>
+          <Projects projects={getProjects()} />
         </div>
-      </div>
-    </>
+      </section>
+      <section id="experience" className="bg-black text-white scroll-mt-4">
+        <div className={container}>
+          <Experience />
+        </div>
+      </section>
+      <section id="skills" className="bg-white text-black scroll-mt-4">
+        <div className={container}>
+          <Skills />
+        </div>
+      </section>
+      <section id="contact" className="bg-black text-white scroll-mt-4">
+        <div className={container}>
+          <Contact />
+        </div>
+      </section>
+    </main>
   );
 }

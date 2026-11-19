@@ -2,10 +2,9 @@ import React, { ReactNode } from 'react';
 
 interface HeadingProps {
   children: ReactNode;
+  className?: string;
 }
 
-export const Heading: React.FC<HeadingProps> = ({ children }) => {
-  return (
-    <h5 className="uppercase font-semibold tracking-wide">{children}</h5>
-  );
+export const Heading: React.FC<HeadingProps> = ({ children, className = '' }) => {
+  return <h2 className={`text-sm uppercase font-semibold tracking-wide ${className}`}>{children}</h2>;
 };

@@ -1,0 +1,106 @@
+{
+  "slug": "commerce-analytics-saas",
+  "title": "Multi-Tenant Commerce Analytics SaaS",
+  "tagline": "LTV, cohorts, finance & marketing ROI for Shopify merchants",
+  "client": "SaaS product",
+  "period": "Oct 2023 – Present",
+  "ongoing": true,
+  "role": "Founding & Lead Full-Stack Engineer",
+  "summary": "A multi-tenant analytics platform for Shopify merchants combining store, accounting and ad data into customer LTV, cohorts, financial reports, marketing ROI and an AI chat assistant. Built from the first commit and led for 3+ years.",
+  "overview": [
+    "A multi-tenant SaaS analytics platform for Shopify merchants. It pulls in each store’s orders, customers, products and discounts, plus accounting data from QuickBooks and ad spend from Google Ads and Meta, and turns it into customer lifetime value, cohort retention, segments, financial reports, marketing ROI and an AI assistant that answers questions about the store’s own data.",
+    "I was the founding and lead engineer: I made the initial commit, built most of the frontend and backend, ran the release flow from develop to staging to production, and ran it on GCP for over three years while other contributors joined and left."
+  ],
+  "tech": [
+    "Python",
+    "Django / DRF",
+    "PostgreSQL",
+    "Redis",
+    "GCP",
+    "Docker",
+    "React 18",
+    "Redux Toolkit",
+    "Vite",
+    "Ant Design",
+    "Gemini"
+  ],
+  "stats": [
+    {
+      "label": "Frontend commits",
+      "value": "1,730",
+      "note": "~94% of all"
+    },
+    {
+      "label": "Backend commits",
+      "value": "2,925",
+      "note": "~62% of all"
+    },
+    {
+      "label": "Merges / releases",
+      "value": "2,750+",
+      "note": "~98% FE · ~70% BE"
+    },
+    {
+      "label": "Duration",
+      "value": "3+ yrs",
+      "note": "first commit → production"
+    }
+  ],
+  "statsNote": "Approximate: counted across all branches, with merges counted separately.",
+  "contributions": [
+    {
+      "area": "Shopify app & data sync engine",
+      "points": [
+        "Shopify OAuth, app approval, offline tokens and webhooks with HMAC verification.",
+        "Designed and tuned the background sync pipeline: first-sync status, progress tracking, priority task queues, scheduling in each store’s timezone, and fixes for stalled syncs."
+      ]
+    },
+    {
+      "area": "Customer analytics (core product)",
+      "points": [
+        "Cohort charts, LTV over time, churn and retention, custom and top segments, customer health and predictive LTV.",
+        "SQL/CTE aggregations for order metrics and revenue by cohort, plus performance work such as cutting segment-LTV refresh cost and storing predictive LTV as per-customer arrays."
+      ]
+    },
+    {
+      "area": "Finance: QuickBooks integration",
+      "points": [
+        "Intuit OAuth with reconnect after uninstall; sync of bills, invoices, departments and company currency.",
+        "Balance-sheet export, financial costs, budgeting with driver modes, and financial reconciliation."
+      ]
+    },
+    {
+      "area": "Marketing integrations",
+      "points": [
+        "Google Ads scheduler and calculator; Meta Ads auth with token refresh and rate limiting; server-side Meta Conversions API.",
+        "Shopify Web Pixel reconciliation, campaign tagging and a marketing dashboard (overview, spend trend, channel comparison)."
+      ]
+    },
+    {
+      "area": "AI assistant",
+      "points": [
+        "A chat assistant over store data with intent parsing, conversation context, streaming responses, awareness of the current page’s filters, and a migration to Gemini."
+      ]
+    },
+    {
+      "area": "Platform, SaaS & security",
+      "points": [
+        "Roles and permissions, org invites, usage limits and plans, and a super-admin dashboard with audited, session-based impersonation.",
+        "Hardening: deny-by-default permissions, auth throttling, HTTPS/HSTS, removing committed secrets and fixing token leaks.",
+        "Feature flags, alerting, and Slack / email notifications."
+      ]
+    },
+    {
+      "area": "Frontend architecture",
+      "points": [
+        "The whole React app shell: sidebar, routing, filters, onboarding tours, responsive design and branded PDF reports."
+      ]
+    }
+  ],
+  "achievements": [
+    "Founding engineer: made the initial commit and still the top committer 3+ years later.",
+    "Authored ~94% of frontend and ~62% of backend commits.",
+    "Owned integration and releases (~98% of frontend merges).",
+    "Unified store, accounting and ad data in one product."
+  ]
+}

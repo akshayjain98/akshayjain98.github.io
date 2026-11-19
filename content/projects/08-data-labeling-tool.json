@@ -1,0 +1,137 @@
+{
+  "slug": "data-labeling-tool",
+  "title": "Data Labeling Tool",
+  "tagline": "Image and text-based document annotation tool",
+  "client": "Client: USA",
+  "period": "Feb 2020 – May 2023",
+  "role": "Full-Stack Developer (backend first, then frontend)",
+  "summary": "An enterprise annotation platform for text, PDFs and images (NLP and Visual NER). I started on the backend (Flask/Django APIs, PostgreSQL, Keycloak IAM) and later took on the frontend as well, including the move to React. Top contributor out of 75 developers.",
+  "overview": [
+    "An enterprise data labeling platform. Teams use it to annotate text, PDFs and images for NLP and Visual NER, manage annotators and reviewers, and train or pre-annotate with pretrained NLP models.",
+    "I joined on the backend: Flask and Django REST APIs, SQLAlchemy models and migrations, PostgreSQL design for labeling workflows, audit logs and reporting, and Keycloak authentication and RBAC. I then took on the frontend as well, leading the migration from server-rendered templates to a React/Redux app and building Visual NER annotation. By the end I was the top committer out of 75 contributors, working across backend, frontend, security, testing and deployment."
+  ],
+  "workSplit": [
+    {
+      "label": "Backend",
+      "percent": 60
+    },
+    {
+      "label": "Frontend",
+      "percent": 40
+    }
+  ],
+  "tech": [
+    "Python",
+    "Flask",
+    "Django",
+    "SQLAlchemy",
+    "PostgreSQL",
+    "Keycloak (IAM)",
+    "REST APIs",
+    "Docker",
+    "AWS EC2",
+    "Pytest",
+    "Selenium",
+    "Airflow",
+    "React",
+    "Redux",
+    "MobX",
+    "Storybook"
+  ],
+  "stats": [
+    {
+      "label": "Commits",
+      "value": "1,871",
+      "note": "1,359 code + 512 merges"
+    },
+    {
+      "label": "Contributor rank",
+      "value": "#1",
+      "note": "of 75 contributors"
+    },
+    {
+      "label": "Lines changed",
+      "value": "~469K",
+      "note": "~293K added · ~176K removed"
+    },
+    {
+      "label": "Jira tickets",
+      "value": "325+",
+      "note": "referenced in commits"
+    }
+  ],
+  "statsNote": "Commits per year: 2020 · 400, 2021 · 571, 2022 · 660, 2023 · 240.",
+  "contributions": [
+    {
+      "area": "REST APIs & backend services",
+      "layer": "Backend",
+      "points": [
+        "Built Flask and Django REST APIs for image and text annotation workflows, user actions and platform operations.",
+        "Wrote controllers, helpers and Swagger API documentation for the platform’s services."
+      ]
+    },
+    {
+      "area": "Database & data model",
+      "layer": "Backend",
+      "points": [
+        "Designed and worked extensively with PostgreSQL for application data, labeling workflows, audit logs and reporting.",
+        "Built SQLAlchemy models and managed schema changes through Alembic migrations."
+      ]
+    },
+    {
+      "area": "Authentication & IAM",
+      "layer": "Backend",
+      "points": [
+        "Integrated Keycloak IAM for secure authentication and Role-Based Access Control.",
+        "Moved UMA policies from role-based to client-based, configured protocol mappers, and fixed token refresh and session-expiry handling.",
+        "Automated Keycloak setup with Docker."
+      ]
+    },
+    {
+      "area": "Annotation workflow & collaboration",
+      "layer": "Full-stack",
+      "points": [
+        "Task assignment (annotators see only their own tasks), reviewer flows, per-user task status and \"serve next task after review\".",
+        "Sharing projects with multiple users at once, permission view/revoke, and task filters for annotators and reviewers."
+      ]
+    },
+    {
+      "area": "Import, export & Models Hub",
+      "layer": "Full-stack",
+      "points": [
+        "Chunked upload for large project imports, export filters, and CoNLL / tag-based export.",
+        "Built the Models Hub from scratch: browse, download, upload, retry and delete pretrained models, with language filters, pagination, download limits and a model evaluation UI."
+      ]
+    },
+    {
+      "area": "Testing & deployment",
+      "layer": "Backend",
+      "points": [
+        "Wrote Pytest API tests and Selenium UI suites run in CI on every pull request.",
+        "Containerized services with Docker and deployed them to AWS EC2; worked with Airflow-based workflows."
+      ]
+    },
+    {
+      "area": "Migration to React (2021)",
+      "layer": "Frontend",
+      "points": [
+        "Led the move from server-rendered Jinja templates to a React/Redux app: Projects, Create Project, Setup, Models Hub, Settings, Profile and the core Labeling page.",
+        "Built reusable modals, toasts and confirm boxes, documented them in Storybook, and upgraded the embedded open-source labeling engine."
+      ]
+    },
+    {
+      "area": "Visual NER & labeling experience",
+      "layer": "Frontend",
+      "points": [
+        "Visual NER for PDFs (2022): cross-page annotation, chunk search, \"label all occurrences\", pagination, relations on regions and confidence-score display.",
+        "Drafts and auto-save with history, hide/unhide regions, inter-annotator agreement charts, and filters that persist across navigation (React, Redux, MobX)."
+      ]
+    }
+  ],
+  "achievements": [
+    "Top committer out of 75 contributors (1,871 commits).",
+    "Built the backend foundation: APIs, PostgreSQL data model and Keycloak RBAC.",
+    "Led the React/Redux migration of the whole application UI.",
+    "Grew from backend developer to full-stack owner over 3+ years."
+  ]
+}

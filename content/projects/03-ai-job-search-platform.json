@@ -1,0 +1,99 @@
+{
+  "slug": "ai-job-search-platform",
+  "title": "AI Job-Search & Application Platform",
+  "tagline": "Semantic job matching and GPT-tailored resumes",
+  "client": "Client: USA",
+  "period": "Jul 2024 – Jan 2025",
+  "role": "Backend Engineer (Python / Django)",
+  "summary": "An AI job-search platform that ingests listings daily, enriches them with OpenAI, matches jobs semantically with pgvector, and generates job-specific resumes as PDFs.",
+  "overview": [
+    "An AI job-search and application platform on Django and Google Cloud. It ingests job listings every day from an external data provider, enriches them with OpenAI batch jobs, and matches them to users with vector search in PostgreSQL.",
+    "Users upload a resume, which is parsed with PyMuPDF and GPT, and the platform generates resumes and cover letters tailored to each job, tracks applications, and powers a Chrome extension that applies automatically. I was the main backend contributor during the later phase of the project."
+  ],
+  "tech": [
+    "Python",
+    "Django",
+    "DRF",
+    "PostgreSQL",
+    "pgvector",
+    "OpenAI",
+    "Firebase",
+    "Google App Engine",
+    "Cloud Tasks",
+    "AWS S3",
+    "WeasyPrint",
+    "PyMuPDF"
+  ],
+  "stats": [
+    {
+      "label": "Commits",
+      "value": "~104",
+      "note": "excluding merges"
+    },
+    {
+      "label": "Repo rank",
+      "value": "#1",
+      "note": "top committer (next: 69)"
+    },
+    {
+      "label": "PRs merged",
+      "value": "#80–#89",
+      "note": "most recent releases"
+    },
+    {
+      "label": "Duration",
+      "value": "~7 mo",
+      "note": "Jul 2024 – Jan 2025"
+    }
+  ],
+  "statsNote": "Counts from the repository’s git history.",
+  "contributions": [
+    {
+      "area": "Auth & refactoring",
+      "points": [
+        "Connected Firebase login to Django, issuing JWT access and refresh tokens and securing the job APIs.",
+        "Reorganised the Jobs APIs into a cleaner module layout; fixed CORS, database configuration and migrations."
+      ]
+    },
+    {
+      "area": "Async processing",
+      "points": [
+        "Moved resume parsing to Google Cloud Tasks handlers to avoid App Engine request timeouts on long LLM calls.",
+        "Fixed Cloud Logging errors and how data was written to Firestore."
+      ]
+    },
+    {
+      "area": "Resume builder & PDFs",
+      "points": [
+        "Built the resume builder API, job-tailored resume generation and the download endpoint.",
+        "Owned the HTML-to-PDF templates (formatting, projects, certifications, volunteer sections) rendered with WeasyPrint.",
+        "Built premium features: test resumes and user-defined skills."
+      ]
+    },
+    {
+      "area": "Job tracker & auto-apply",
+      "points": [
+        "Built the job-status API (applied, expired, self-apply) and persistent tracker data, with backfilling for older jobs.",
+        "Added \"Add Job\" to the tracker and built the backend for the Chrome extension’s auto-apply."
+      ]
+    },
+    {
+      "area": "Search & AI enrichment",
+      "points": [
+        "Added semantic job search with pgvector embeddings and the job search API.",
+        "Extended the OpenAI enrichment pipeline with a cron job, limited by environment to control cost."
+      ]
+    },
+    {
+      "area": "Operations",
+      "points": [
+        "Added Slack notifications, structured logging and error handling; upgraded the OpenAI SDK, WeasyPrint and Python runtime."
+      ]
+    }
+  ],
+  "achievements": [
+    "Top committer in the repository during the project’s later phase.",
+    "Shipped semantic search on pgvector embeddings.",
+    "Kept OpenAI costs in check by limiting enrichment per environment."
+  ]
+}

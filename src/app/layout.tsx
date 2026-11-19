@@ -55,8 +55,8 @@ const poppins = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Akshay Jain",
-  description: "Akshay Jain is a Full Stack Developer",
+  title: "Akshay Jain · Senior Full-Stack / AI Engineer",
+  description: "Akshay Jain: Senior Full-Stack / AI Engineer. Python, FastAPI, Django, React, Next.js, RAG and LLMs.",
 };
 
 export default function RootLayout({

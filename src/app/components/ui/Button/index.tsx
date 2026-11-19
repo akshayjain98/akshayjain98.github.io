@@ -1,9 +1,9 @@
-import React, { ButtonHTMLAttributes } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { HTMLMotionProps, motion } from "framer-motion";
 
 type ButtonVariant = "contained" | "outline";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: ButtonVariant;
   className?: string;
 }

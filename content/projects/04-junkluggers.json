@@ -1,0 +1,46 @@
+{
+  "slug": "junkluggers",
+  "title": "Junkluggers",
+  "tagline": "Data-driven decision making and operational efficiency",
+  "client": "Client: USA",
+  "period": "Jan 2024 – Mar 2024",
+  "role": "Database and Backend Developer",
+  "summary": "Reporting and data-processing workflows on AWS for a US service business: complex Redshift SQL, S3-to-Redshift loading, and Python report generation.",
+  "overview": [
+    "A reporting engagement focused on turning large operational datasets into decision-ready reports for a US service business.",
+    "I wrote complex Amazon Redshift SQL, built Python workflows for processing and report generation, and set up data loading from Amazon S3 into Redshift, then tuned queries for speed and reliability."
+  ],
+  "tech": [
+    "Python",
+    "Amazon Redshift",
+    "SQL",
+    "AWS S3",
+    "AWS"
+  ],
+  "contributions": [
+    {
+      "area": "SQL & reporting",
+      "points": [
+        "Developed complex Amazon Redshift SQL queries for business reporting and analysis.",
+        "Extracted, transformed and organized data from large datasets to match reporting requirements."
+      ]
+    },
+    {
+      "area": "Pipelines",
+      "points": [
+        "Built Python backend workflows for data processing and report generation.",
+        "Implemented data-loading workflows using Amazon S3 and Redshift."
+      ]
+    },
+    {
+      "area": "Performance",
+      "points": [
+        "Optimized queries and data-processing operations to improve reporting efficiency and reliability."
+      ]
+    }
+  ],
+  "achievements": [
+    "Faster, more reliable reporting through query optimization.",
+    "Automated S3 → Redshift data loading."
+  ]
+}
