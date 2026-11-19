@@ -1,10 +1,14 @@
-import { getProfile } from '@/lib/content';
+import { getExperience, getProfile, getProjects, getSkills } from '@/lib/content';
 import Image from 'next/image';
 import React from 'react';
+import { Terminal } from '../Terminal';
+import { toTerminalData } from '../Terminal/commands';
 import Tag from '../ui/Tag';
 
 const About: React.FC = () => {
-  const { heroStats, headline, title, summary, summaryDetail, openTo, location, photo, firstName, lastName } = getProfile();
+  const profile = getProfile();
+  const { headline, title, summary, summaryDetail, openTo, location, photo, firstName, lastName } = profile;
+  const terminalData = toTerminalData(profile, getProjects(), getExperience(), getSkills());
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-10 sm:gap-12 lg:gap-12 xl:gap-20 py-10 sm:py-12 lg:py-20 items-center flex-1">
       <div className="flex-1 min-w-0 flex flex-col justify-center gap-6">
@@ -28,7 +32,7 @@ const About: React.FC = () => {
           <a href="#projects" className="btn-apple">
             View projects
           </a>
-          <a href="/resume" className="btn-apple-outline">
+          <a href="/resume/" className="btn-apple-outline">
             Download resume
           </a>
           {location && <span className="text-sm text-apple-muted">Based in {location}</span>}
@@ -41,14 +45,7 @@ const About: React.FC = () => {
             <Image src={photo} alt={`${firstName} ${lastName}`} fill priority sizes="(min-width: 1280px) 420px, (min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
         )}
-        <div className="rounded-[28px] bg-black text-white p-6 sm:p-8 grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-6 sm:gap-y-8 content-center">
-          {heroStats.map((stat) => (
-            <div key={stat.label}>
-              <p className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em] break-words">{stat.value}</p>
-              <p className="mt-2 text-sm text-[#86868b]">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+        <Terminal data={terminalData} />
       </div>
     </div>
   );

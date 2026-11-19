@@ -66,7 +66,7 @@ export const NavBar: React.FC<{ firstName: string; lastName: string }> = ({ firs
             {item.label}
           </a>
         ))}
-        <a href="/resume" className="btn-apple-sm">
+        <a href="/resume/" className="btn-apple-sm">
           Resume
         </a>
       </nav>
@@ -123,7 +123,7 @@ export const NavBar: React.FC<{ firstName: string; lastName: string }> = ({ firs
                 </motion.li>
               ))}
             </ul>
-            <a href="/resume" className="btn-apple mt-8 w-full sm:w-auto">
+            <a href="/resume/" className="btn-apple mt-8 w-full sm:w-auto">
               Resume
             </a>
           </motion.nav>
