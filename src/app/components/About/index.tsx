@@ -1,6 +1,6 @@
 import { portfolioData } from '@/app/services/portfolioData';
 import React from "react";
-import Tag from '../Tag';
+import Tag from '../ui/Tag';
 
 const About: React.FC = () => {
   return (
