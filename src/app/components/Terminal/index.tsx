@@ -13,6 +13,9 @@ interface Entry {
 
 const QUICK = ['/projects', '/skills', '/contact'];
 
+/** Phones and tablets (Tailwind's `max-lg`): expanding opens the terminal full screen. */
+const SMALL_SCREEN = '(max-width: 1023.98px)';
+
 interface Stream {
   id: number;
   total: number;
@@ -272,9 +275,51 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
     }
   };
 
+  // Below lg, "expanded" means a full-screen overlay instead of a wider card.
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [placeholderH, setPlaceholderH] = useState<number>();
+  const [fullscreen, setFullscreen] = useState(false);
+  const [vvHeight, setVvHeight] = useState<number>();
+
+  useEffect(() => {
+    if (!expanded) {
+      setFullscreen(false);
+      return;
+    }
+    const mq = window.matchMedia(SMALL_SCREEN);
+    const sync = () => setFullscreen(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, [expanded]);
+
+  // While full screen: lock page scroll and follow the visual viewport, so the prompt stays above the on-screen keyboard.
+  useEffect(() => {
+    if (!fullscreen) return;
+    const html = document.documentElement;
+    const prevOverflow = html.style.overflow;
+    html.style.overflow = 'hidden';
+    const vv = window.visualViewport;
+    const onResize = () => vv && setVvHeight(vv.height);
+    onResize();
+    vv?.addEventListener('resize', onResize);
+    return () => {
+      html.style.overflow = prevOverflow;
+      vv?.removeEventListener('resize', onResize);
+      setVvHeight(undefined);
+    };
+  }, [fullscreen]);
+
+  useEffect(() => {
+    if (fullscreen) outRef.current?.scrollTo({ top: outRef.current.scrollHeight });
+  }, [fullscreen]);
+
   const toggleExpand = () => {
+    // Keep the card's slot in the page so nothing jumps behind the overlay or after closing it.
+    if (!expanded && rootRef.current) setPlaceholderH(rootRef.current.offsetHeight);
     onToggleExpand?.();
-    inputRef.current?.focus({ preventScroll: true });
+    // On touch screens, focusing would pop the keyboard over the freshly opened terminal.
+    if (!window.matchMedia('(pointer: coarse)').matches) inputRef.current?.focus({ preventScroll: true });
   };
   const resizeLabel = expanded ? 'Collapse terminal' : 'Expand terminal';
 
@@ -286,122 +331,142 @@ export const Terminal: React.FC<TerminalProps> = ({ data, expanded = false, onTo
   );
 
   return (
-    <div
-      className={`w-full rounded-[28px] bg-black text-white overflow-hidden font-mono ${expanded ? 'text-[14px] sm:text-[15px]' : 'text-[13px]'} leading-[1.55] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)]`}
-      onClick={(e) => {
-        // Focus the prompt when clicking empty terminal space, but not when selecting text or clicking links.
-        if (!(e.target as HTMLElement).closest('a,button') && !window.getSelection()?.toString()) inputRef.current?.focus({ preventScroll: true });
-      }}
-    >
-      <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
-        <span aria-hidden className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-        <span aria-hidden className="h-3 w-3 rounded-full bg-[#febc2e]" />
-        {onToggleExpand ? (
-          // Green "zoom" light, like macOS. The labelled button on the right is the primary control.
-          <button type="button" tabIndex={-1} aria-hidden title={resizeLabel} onClick={toggleExpand} className="h-3 w-3 rounded-full bg-[#28c840] hover:brightness-110" />
-        ) : (
-          <span aria-hidden className="h-3 w-3 rounded-full bg-[#28c840]" />
-        )}
-        <span className="ml-2 text-xs text-[#86868b] truncate">{data.profile.firstName.toLowerCase()}@portfolio: ~</span>
-        {onToggleExpand && (
-          <button
-            type="button"
-            onClick={toggleExpand}
-            aria-label={resizeLabel}
-            aria-pressed={expanded}
-            title={expanded ? 'Collapse (Esc)' : 'Expand'}
-            className="ml-auto -mr-1.5 rounded-lg p-1.5 text-[#86868b] hover:bg-white/10 hover:text-white transition-colors"
-          >
-            <ResizeIcon expanded={expanded} />
-          </button>
-        )}
-      </div>
-
-      <div className="relative">
-        <div
-          ref={outRef}
-          aria-live="polite"
-          aria-busy={stream !== null}
-          onClick={() => stream && skipStream()}
-          className={`${expanded ? 'h-[420px] sm:h-[520px] lg:h-[560px]' : 'h-[300px] sm:h-[340px]'} motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-out overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words`}
-        >
-          {entries.map((entry) => {
-            const streaming = stream?.id === entry.id ? stream : null;
-            return (
-              <div key={entry.id} className="mb-3">
-                {entry.input && (
-                  <p>
-                    {prompt}
-                    <span className="text-white">{entry.input}</span>
-                  </p>
-                )}
-                {streaming && streaming.shown < 0 ? <Thinking /> : <StreamedLines lines={entry.lines} shown={streaming ? streaming.shown : Infinity} />}
-              </div>
-            );
-          })}
+    <div className="w-full" style={fullscreen ? { minHeight: placeholderH } : undefined}>
+      <div
+        ref={rootRef}
+        role={fullscreen ? 'dialog' : undefined}
+        aria-modal={fullscreen || undefined}
+        aria-label={fullscreen ? 'Terminal' : undefined}
+        style={fullscreen && vvHeight ? { height: vvHeight } : undefined}
+        className={`w-full bg-black text-white overflow-hidden font-mono ${expanded ? 'text-[14px] sm:text-[15px]' : 'text-[13px]'} leading-[1.55] ${
+          fullscreen
+            ? 'fixed inset-x-0 top-0 z-[60] h-[100dvh] flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]'
+            : 'rounded-[28px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)]'
+        }`}
+        onClick={(e) => {
+          // Focus the prompt when clicking empty terminal space, but not when selecting text or clicking links.
+          if (!(e.target as HTMLElement).closest('a,button') && !window.getSelection()?.toString()) inputRef.current?.focus({ preventScroll: true });
+        }}
+      >
+        <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
+          <span aria-hidden className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+          <span aria-hidden className="h-3 w-3 rounded-full bg-[#febc2e]" />
+          {onToggleExpand ? (
+            // Green "zoom" light, like macOS. The labelled button on the right is the primary control.
+            <button type="button" tabIndex={-1} aria-hidden title={resizeLabel} onClick={toggleExpand} className="h-3 w-3 rounded-full bg-[#28c840] hover:brightness-110" />
+          ) : (
+            <span aria-hidden className="h-3 w-3 rounded-full bg-[#28c840]" />
+          )}
+          <span className="ml-2 text-xs text-[#86868b] truncate">{data.profile.firstName.toLowerCase()}@portfolio: ~</span>
+          {onToggleExpand && (
+            <button
+              type="button"
+              onClick={toggleExpand}
+              aria-label={resizeLabel}
+              aria-pressed={expanded}
+              title={expanded ? 'Collapse (Esc)' : 'Expand'}
+              className="ml-auto -mr-1.5 rounded-lg p-1.5 text-[#86868b] hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <ResizeIcon expanded={expanded} />
+            </button>
+          )}
         </div>
 
-        {showMenu && (
-          <ul
-            id={listId}
-            role="listbox"
-            aria-label="Command suggestions"
-            className="absolute inset-x-3 bottom-1 max-h-[220px] overflow-y-auto rounded-2xl border border-white/10 bg-[#1c1c1e]/95 backdrop-blur p-1.5 shadow-2xl"
+        <div className={`relative ${fullscreen ? 'flex-1 min-h-0' : ''}`}>
+          <div
+            ref={outRef}
+            aria-live="polite"
+            aria-busy={stream !== null}
+            onClick={() => stream && skipStream()}
+            className={`${fullscreen ? 'h-full' : expanded ? 'h-[420px] sm:h-[520px] lg:h-[560px]' : 'h-[240px] sm:h-[340px]'} motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-out overflow-y-auto overscroll-contain px-5 pt-4 pb-2 break-words`}
           >
-            {suggestions.map((s, i) => (
-              <li
-                key={s.value}
-                id={`${listId}-${i}`}
-                role="option"
-                aria-selected={i === sel}
-                onMouseDown={(e) => e.preventDefault()}
-                onMouseEnter={() => setSel(i)}
-                onClick={() => pick(s.value)}
-                className={`flex items-baseline justify-between gap-3 rounded-xl px-3 py-1.5 cursor-pointer ${i === sel ? 'bg-white/10' : ''}`}
-              >
-                <span className="text-white whitespace-nowrap">{s.label}</span>
-                {s.hint && <span className="text-[#86868b] text-xs truncate">{s.hint}</span>}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+            {entries.map((entry) => {
+              const streaming = stream?.id === entry.id ? stream : null;
+              return (
+                <div key={entry.id} className="mb-3">
+                  {entry.input && (
+                    <p>
+                      {prompt}
+                      <span className="text-white">{entry.input}</span>
+                    </p>
+                  )}
+                  {streaming && streaming.shown < 0 ? <Thinking /> : <StreamedLines lines={entry.lines} shown={streaming ? streaming.shown : Infinity} />}
+                </div>
+              );
+            })}
+          </div>
 
-      <div className="flex items-center px-5 py-3 border-t border-white/10">
-        {prompt}
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-            setMenuOpen(true);
-            setHistIdx(null);
-          }}
-          onKeyDown={onKeyDown}
-          placeholder="type / for commands"
-          aria-label="Terminal command"
-          role="combobox"
-          aria-expanded={showMenu}
-          aria-controls={listId}
-          aria-autocomplete="list"
-          aria-activedescendant={showMenu ? `${listId}-${sel}` : undefined}
-          autoComplete="off"
-          autoCapitalize="off"
-          autoCorrect="off"
-          spellCheck={false}
-          className="flex-1 min-w-0 bg-transparent text-white placeholder:text-white/30 outline-none caret-[#30d158]"
-        />
-      </div>
+          {showMenu && (
+            <ul
+              id={listId}
+              role="listbox"
+              aria-label="Command suggestions"
+              className="absolute inset-x-3 bottom-1 max-h-[220px] overflow-y-auto rounded-2xl border border-white/10 bg-[#1c1c1e]/95 backdrop-blur p-1.5 shadow-2xl"
+            >
+              {suggestions.map((s, i) => (
+                <li
+                  key={s.value}
+                  id={`${listId}-${i}`}
+                  role="option"
+                  aria-selected={i === sel}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onMouseEnter={() => setSel(i)}
+                  onClick={() => pick(s.value)}
+                  className={`flex items-baseline justify-between gap-3 rounded-xl px-3 py-1.5 cursor-pointer ${i === sel ? 'bg-white/10' : ''}`}
+                >
+                  <span className="text-white whitespace-nowrap">{s.label}</span>
+                  {s.hint && <span className="text-[#86868b] text-xs truncate">{s.hint}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div className="flex flex-wrap gap-2 px-5 pb-4">
-        {QUICK.map((q) => (
-          <button key={q} type="button" onClick={() => execute(q)} className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors">
-            {q}
+        <div className="flex items-center px-5 py-3 border-t border-white/10">
+          {prompt}
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              setMenuOpen(true);
+              setHistIdx(null);
+            }}
+            onKeyDown={onKeyDown}
+            placeholder="type / for commands"
+            aria-label="Terminal command"
+            role="combobox"
+            aria-expanded={showMenu}
+            aria-controls={listId}
+            aria-autocomplete="list"
+            aria-activedescendant={showMenu ? `${listId}-${sel}` : undefined}
+            autoComplete="off"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            className="flex-1 min-w-0 bg-transparent text-white placeholder:text-white/30 outline-none caret-[#30d158]"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 px-5 pb-4">
+          {QUICK.map((q) => (
+            <button
+              key={q}
+              type="button"
+              onClick={() => execute(q)}
+              className="rounded-full border border-white/15 px-2.5 sm:px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              {q}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => execute('/help')}
+            className="rounded-full border border-white/15 px-2.5 sm:px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+          >
+            /help
           </button>
-        ))}
-        <button type="button" onClick={() => execute('/help')} className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors">
-          /help
-        </button>
+        </div>
       </div>
     </div>
   );
