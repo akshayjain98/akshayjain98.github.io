@@ -8,8 +8,8 @@ const EmployerBlock = ({ employer, current }: { employer: Employer; current: boo
   <div className="flex flex-col gap-8">
     <div className="flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h3 className="text-3xl sm:text-4xl font-bold">{employer.company}</h3>
-        <p className="mt-2 text-gray-400">
+        <h3 className="text-2xl sm:text-3xl lg:text-[40px] font-semibold tracking-[-0.02em] break-words">{employer.company}</h3>
+        <p className="mt-2 text-[#86868b]">
           {employer.period}
           {employer.roles.length > 1 && ` · ${employer.roles.length} roles`}
         </p>
@@ -23,7 +23,7 @@ const EmployerBlock = ({ employer, current }: { employer: Employer; current: boo
       </span>
     </div>
 
-    <ol className="relative flex flex-col gap-12 border-l border-gray-700 ml-2 pl-6 sm:pl-10">
+    <ol className="relative flex flex-col gap-10 sm:gap-12 border-l border-gray-700 ml-2 pl-6 sm:pl-10">
       {employer.roles.map((role, i) => (
         <li key={role.period + role.title} className="relative">
           <span
@@ -37,16 +37,16 @@ const EmployerBlock = ({ employer, current }: { employer: Employer; current: boo
               <p className="text-sm font-semibold">{role.period}</p>
               <div className="flex flex-col gap-4">
                 <div>
-                  <h4 className="text-xl sm:text-2xl font-bold">{role.title}</h4>
-                  <p className="mt-2 text-gray-300">{role.summary}</p>
+                  <h4 className="text-lg sm:text-2xl font-semibold tracking-[-0.015em]">{role.title}</h4>
+                  <p className="mt-2 text-[17px] leading-[1.47] text-[#d2d2d7]">{role.summary}</p>
                 </div>
-                <ul className="list-disc pl-5 flex flex-col gap-1.5 text-gray-400">
+                <ul className="list-disc pl-5 flex flex-col gap-1.5 text-[#a1a1a6] marker:text-[#6e6e73]">
                   {role.points.map((p) => (
                     <li key={p.slice(0, 40)}>{p}</li>
                   ))}
                 </ul>
                 <div className="flex flex-col gap-2">
-                  <p className="text-xs uppercase tracking-wide text-gray-500">Key projects</p>
+                  <p className="text-sm font-semibold text-[#86868b]">Key projects</p>
                   <div className="flex flex-wrap gap-2 text-sm">
                     {role.keyProjects.map((kp) => (
                       <Tag key={kp} theme="dark">
@@ -67,14 +67,14 @@ const EmployerBlock = ({ employer, current }: { employer: Employer; current: boo
 export const Experience = () => {
   const employers = getExperience();
   return (
-    <div className="flex flex-col gap-10 py-20 lg:py-28">
+    <div className="flex flex-col gap-10 py-16 sm:py-20 lg:py-28">
       <div className="flex flex-col gap-3">
         <Heading>Experience</Heading>
-        <p className="text-3xl sm:text-4xl font-semibold max-w-2xl leading-tight">
+        <p className="headline-apple max-w-3xl">
           From intern to technical lead, plus part-time freelance work.
         </p>
       </div>
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-14 sm:gap-20">
         {employers.map((e, i) => (
           <EmployerBlock key={e.company} employer={e} current={i === 0} />
         ))}
@@ -87,16 +87,16 @@ export const Skills = () => {
   const skills = getSkills();
   const { achievements } = getProfile();
   return (
-    <div className="flex flex-col gap-10 py-20 lg:py-28">
+    <div className="flex flex-col gap-8 sm:gap-10 py-16 sm:py-20 lg:py-28">
       <Heading>Skills</Heading>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {skills.map((s, i) => (
           <Reveal key={s.group} delay={(i % 4) * 0.05} className="h-full">
-            <div className="h-full rounded-3xl bg-gray-100 p-6 flex flex-col gap-4">
-              <h3 className="font-semibold">{s.group}</h3>
+            <div className="h-full rounded-[28px] bg-apple-gray p-5 sm:p-7 flex flex-col gap-4 transition duration-500 ease-out hover:scale-[1.015]">
+              <h3 className="text-[19px] font-semibold tracking-[-0.015em]">{s.group}</h3>
               <div className="flex flex-wrap gap-2 text-sm">
                 {s.items.map((item) => (
-                  <Tag key={item} className="!whitespace-normal">
+                  <Tag key={item} className="!whitespace-normal !bg-white">
                     {item}
                   </Tag>
                 ))}
@@ -107,9 +107,9 @@ export const Skills = () => {
       </div>
       <div className="flex flex-col gap-4 pt-6">
         <Heading>Achievements</Heading>
-        <ul className="grid md:grid-cols-3 gap-6">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {achievements.map((a) => (
-            <li key={a} className="rounded-3xl bg-black text-white p-6">
+            <li key={a} className="rounded-[28px] bg-apple-gray text-apple-ink text-[17px] leading-[1.47] p-6 sm:p-7">
               {a}
             </li>
           ))}

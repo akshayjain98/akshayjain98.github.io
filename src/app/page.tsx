@@ -14,34 +14,34 @@ export default function Home() {
     <>
       <Header containerClass={container} />
       <main>
-        <section id="top" className="bg-white text-black">
-          <div className={`${container} min-h-[calc(100vh-77px)] flex flex-col`}>
+        <section id="top" className="bg-white text-apple-ink">
+          <div className={`${container} lg:min-h-[calc(100svh-48px)] flex flex-col`}>
             <About />
           </div>
         </section>
-        <section id="story" className="bg-black text-white scroll-mt-20">
+        <section id="story" className="bg-black text-white scroll-mt-12">
           <div className={container}>
             <Reveal>
               <Story />
             </Reveal>
           </div>
         </section>
-        <section id="projects" className="bg-white text-black scroll-mt-20">
+        <section id="projects" className="bg-apple-gray text-apple-ink scroll-mt-12">
           <div className={container}>
             <Projects projects={getProjects()} />
           </div>
         </section>
-        <section id="experience" className="bg-black text-white scroll-mt-20">
+        <section id="experience" className="bg-black text-white scroll-mt-12">
           <div className={container}>
             <Experience />
           </div>
         </section>
-        <section id="skills" className="bg-white text-black scroll-mt-20">
+        <section id="skills" className="bg-white text-apple-ink scroll-mt-12">
           <div className={container}>
             <Skills />
           </div>
         </section>
-        <section id="contact" className="bg-black text-white scroll-mt-20">
+        <section id="contact" className="bg-black text-white scroll-mt-12">
           <div className={container}>
             <Reveal>
               <Contact />

@@ -6,5 +6,5 @@ interface HeadingProps {
 }
 
 export const Heading: React.FC<HeadingProps> = ({ children, className = '' }) => {
-  return <h2 className={`text-sm uppercase font-semibold tracking-wide ${className}`}>{children}</h2>;
+  return <h2 className={`text-base sm:text-lg font-semibold tracking-[-0.01em] text-[#86868b] ${className}`}>{children}</h2>;
 };

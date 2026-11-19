@@ -14,18 +14,15 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...rest
 }) => {
-  const baseStyle =
-    "rounded-full font-semibold text-sm px-6 py-2 transition-all focus:outline-none";
   const variants = {
-    contained: "bg-black text-white hover:bg-blue-600",
-    outline: "border border-white text-white hover:bg-white hover:text-black",
+    contained: "btn-apple",
+    outline: "btn-apple-outline",
   };
 
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className={`${baseStyle} ${variants[variant]} ${className} w-fit`}
+      whileTap={{ scale: 0.98 }}
+      className={`${variants[variant]} ${className} w-fit`}
       {...rest}
     >
       {children}

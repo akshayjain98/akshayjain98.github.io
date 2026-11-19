@@ -12,9 +12,9 @@ const linkLabels: Record<keyof Profile['links'], string> = {
 export const Contact = () => {
   const { links, firstName, lastName } = getProfile();
   return (
-  <div className="flex flex-col gap-10 py-20 lg:py-28">
+  <div className="flex flex-col gap-8 sm:gap-10 py-16 sm:py-20 lg:py-28">
     <Heading>Contact</Heading>
-    <p className="text-3xl sm:text-5xl font-medium max-w-4xl leading-tight">
+    <p className="headline-apple max-w-4xl">
       Building something with AI, data or a demanding UI? Let&apos;s talk.
     </p>
     <ul className="flex flex-wrap gap-3">
@@ -24,14 +24,14 @@ export const Contact = () => {
             href={links[key]}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-full border border-white px-6 py-3 font-semibold transition-colors hover:bg-white hover:text-black"
+            className="btn-apple-glass"
           >
             {linkLabels[key]} ↗
           </a>
         </li>
       ))}
     </ul>
-    <p className="text-sm text-gray-500 pt-10 border-t border-gray-800">
+    <p className="text-xs text-[#86868b] pt-8 border-t border-white/15">
       © {new Date().getFullYear()} {firstName} {lastName}
     </p>
   </div>
