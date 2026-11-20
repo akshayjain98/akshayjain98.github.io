@@ -3,6 +3,7 @@ import About from './components/About';
 import { Contact } from './components/Contact';
 import { Experience, Skills } from './components/Experience';
 import Header from './components/Header';
+import { Journey } from './components/Journey';
 import { Projects } from './components/Projects';
 import { Story } from './components/Story';
 import { Reveal } from './components/ui/Reveal';
@@ -34,6 +35,11 @@ export default function Home() {
         <section id="experience" className="bg-black text-white scroll-mt-12">
           <div className={container}>
             <Experience />
+          </div>
+        </section>
+        <section id="journey" className="bg-apple-gray text-apple-ink scroll-mt-12">
+          <div className={container}>
+            <Journey />
           </div>
         </section>
         <section id="skills" className="bg-white text-apple-ink scroll-mt-12">

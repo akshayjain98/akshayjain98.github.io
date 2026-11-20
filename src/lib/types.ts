@@ -73,3 +73,27 @@ export interface Employer {
 export type Experience = Employer[];
 
 export type Skills = { group: string; items: string[] }[];
+
+// Derived at build time from experience.json + projects (see getJourneyGraph).
+export type GraphLayer = 'year' | 'role' | 'project' | 'tech';
+
+export interface GraphNode {
+  id: string;
+  layer: GraphLayer;
+  label: string;
+  sublabel: string;
+  /** Relative size: months for years/roles/projects, project count for tech. */
+  weight: number;
+  current?: boolean;
+}
+
+export interface GraphEdge {
+  from: string;
+  to: string;
+  weight: number;
+}
+
+export interface JourneyGraph {
+  layers: GraphNode[][];
+  edges: GraphEdge[];
+}

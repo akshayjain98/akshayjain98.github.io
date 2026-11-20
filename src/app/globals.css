@@ -40,9 +40,37 @@ body {
   }
 }
 
+/* Journey neural graph: a short dash travelling along each edge (path uses pathLength=100). */
+.nn-pulse {
+  stroke-dasharray: 4 196;
+  stroke-dashoffset: 0;
+  animation: nn-pulse 3.2s linear infinite both;
+  pointer-events: none;
+}
+@keyframes nn-pulse {
+  from { stroke-dashoffset: 4; }
+  to { stroke-dashoffset: -100; }
+}
+.nn-breathe {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nn-breathe 2.4s ease-in-out infinite;
+}
+@keyframes nn-breathe {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.35); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .nn-pulse {
+    animation: none;
+    opacity: 0 !important;
+  }
+  .nn-breathe {
+    animation: none;
   }
 }
 

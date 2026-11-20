@@ -33,7 +33,7 @@ export interface Result {
   effect?: Effect;
 }
 
-export const SECTIONS = ['top', 'story', 'projects', 'experience', 'skills', 'contact'] as const;
+export const SECTIONS = ['top', 'story', 'projects', 'experience', 'journey', 'skills', 'contact'] as const;
 
 export interface CommandSpec {
   name: string;
