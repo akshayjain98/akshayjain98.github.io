@@ -7,7 +7,9 @@
       "Django / DRF",
       "Flask",
       "REST APIs",
-      "SQLAlchemy"
+      "SQLAlchemy",
+      "Node.js (GraphQL BFF)",
+      "GraphQL"
     ]
   },
   {
@@ -19,7 +21,8 @@
       "Redux / Redux Toolkit",
       "MobX",
       "Tailwind",
-      "Ant Design"
+      "Ant Design",
+      "MUI"
     ]
   },
   {
@@ -31,7 +34,8 @@
       "Embeddings",
       "Vector Search (pgvector)",
       "Multi-Agent Workflows",
-      "Prompt Engineering"
+      "Prompt Engineering",
+      "Claude Code"
     ]
   },
   {
@@ -44,18 +48,20 @@
       "Firebase / Firestore",
       "Data Modeling",
       "Query Optimization",
-      "Apache Airflow"
+      "Apache Airflow",
+      "pgvector"
     ]
   },
   {
     "group": "Cloud & DevOps",
     "items": [
-      "AWS (EC2, S3)",
+      "AWS (EC2, S3, IAM, Secrets Manager)",
       "GCP (App Engine, Cloud Tasks, Cloud Build)",
       "Azure",
       "Docker",
       "CI/CD",
-      "Linux"
+      "Linux",
+      "GitHub Actions"
     ]
   },
   {
@@ -66,7 +72,9 @@
       "IAM",
       "OAuth 2.0",
       "OIDC",
-      "Firebase Auth"
+      "Firebase Auth",
+      "SSO",
+      "Passkeys (WebAuthn)"
     ]
   },
   {
@@ -76,7 +84,8 @@
       "Shopify",
       "QuickBooks",
       "Google Ads",
-      "Meta Ads"
+      "Meta Ads",
+      "Razorpay"
     ]
   },
   {
@@ -88,7 +97,8 @@
       "Git",
       "Jira",
       "Postman",
-      "Figma"
+      "Figma",
+      "Jest"
     ]
   }
 ]

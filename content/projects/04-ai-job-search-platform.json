@@ -9,11 +9,11 @@
     "AI",
     "Backend"
   ],
-  "role": "Backend Engineer (Python / Django)",
-  "summary": "An AI job-search platform that ingests listings daily, enriches them with OpenAI, matches jobs semantically with pgvector, and generates job-specific resumes as PDFs.",
+  "role": "AI & Backend Engineer · Client Lead",
+  "summary": "An AI job-search platform that ingests listings daily, enriches them with OpenAI, matches jobs to a user’s resume with pgvector, and generates job-specific resumes as PDFs. A two-person team: I handled the client and the AI side, working alongside a junior developer.",
   "overview": [
     "An AI job-search and application platform on Django and Google Cloud. It ingests job listings every day from an external data provider, enriches them with OpenAI batch jobs, and matches them to users with vector search in PostgreSQL.",
-    "Users upload a resume, which is parsed with PyMuPDF and GPT, and the platform generates resumes and cover letters tailored to each job, tracks applications, and powers a Chrome extension that applies automatically. I was the main backend contributor during the later phase of the project."
+    "Users upload a resume, which is parsed with PyMuPDF and GPT, and the platform generates resumes and cover letters tailored to each job, tracks applications, and powers a Chrome extension that applies automatically. I worked with one junior developer: I was the client’s point of contact, worked on the AI and retrieval side on top of the team’s existing OpenAI pipeline, and was the main backend contributor during that phase."
   ],
   "tech": [
     "Python",
@@ -54,6 +54,13 @@
   "statsNote": "Counts from the repository’s git history.",
   "contributions": [
     {
+      "area": "AI & retrieval",
+      "points": [
+        "Extended the existing OpenAI enrichment pipeline with scheduled jobs, storing job embeddings in PostgreSQL with pgvector.",
+        "Built retrieval over those embeddings to match jobs to a user’s resume, and a retrieval-augmented flow where GPT tailors the resume to the retrieved job’s requirements."
+      ]
+    },
+    {
       "area": "Auth & refactoring",
       "points": [
         "Connected Firebase login to Django, issuing JWT access and refresh tokens and securing the job APIs.",
@@ -83,22 +90,22 @@
       ]
     },
     {
-      "area": "Search & AI enrichment",
-      "points": [
-        "Added semantic job search with pgvector embeddings and the job search API.",
-        "Extended the OpenAI enrichment pipeline with a cron job, limited by environment to control cost."
-      ]
-    },
-    {
       "area": "Operations",
       "points": [
         "Added Slack notifications, structured logging and error handling; upgraded the OpenAI SDK, WeasyPrint and Python runtime."
       ]
+    },
+    {
+      "area": "Client & team",
+      "points": [
+        "Worked directly with the client on requirements, priorities and releases.",
+        "Split the work with a junior developer and reviewed and merged the team’s PRs."
+      ]
     }
   ],
   "achievements": [
-    "Top committer in the repository during the project’s later phase.",
-    "Shipped semantic search on pgvector embeddings.",
+    "Owned the client relationship and the AI side of the product.",
+    "Shipped resume-to-job matching on pgvector embeddings and GPT resume tailoring.",
     "Kept OpenAI costs in check by limiting enrichment per environment."
   ]
 }

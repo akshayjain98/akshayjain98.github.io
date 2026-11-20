@@ -1,0 +1,54 @@
+{
+  "slug": "yacht-charter-platform",
+  "title": "Yacht Charter & Management Platform",
+  "tagline": "Leading the team and architecture of a charter and fleet-management product",
+  "client": "Client: USA",
+  "period": "Jan 2026 – Apr 2026",
+  "engagement": "Full-time",
+  "categories": [
+    "Full-stack"
+  ],
+  "role": "Team Lead & Senior Architect",
+  "summary": "A platform for chartering yachts and managing a fleet. I led the team and owned the architecture: turning the client’s business requirements into tasks, designing the database structure and reviewing the team’s code.",
+  "overview": [
+    "A yacht charter and management platform for a US client, built with Next.js, FastAPI and PostgreSQL, covering bookings for charter customers and the operational side of managing a fleet.",
+    "I joined as team leader and senior architect. I ran the business discussions with the client, broke the requirements into tasks with the developers, designed the database structure, and reviewed code to keep the implementation consistent with the architecture."
+  ],
+  "tech": [
+    "Next.js",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Passkeys (WebAuthn)",
+    "Custom RBAC",
+    "Figma",
+    "Claude"
+  ],
+  "contributions": [
+    {
+      "area": "Architecture & data model",
+      "points": [
+        "Owned the technical architecture of the platform.",
+        "Designed the database structure for charters, fleet and management workflows.",
+        "Designed the access model: passkey sign-in and a custom role-based access control system."
+      ]
+    },
+    {
+      "area": "Client & requirements",
+      "points": [
+        "Led business discussions with the client and translated them into technical requirements."
+      ]
+    },
+    {
+      "area": "Team leadership",
+      "points": [
+        "Planned and discussed tasks with the developers and tracked delivery.",
+        "Reviewed code across the team and guided implementation.",
+        "Worked from Figma designs, and used Claude for code help and technical discussion."
+      ]
+    }
+  ],
+  "achievements": [
+    "Led the team as architect from requirements through database design to code review."
+  ]
+}

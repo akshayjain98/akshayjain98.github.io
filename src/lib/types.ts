@@ -20,7 +20,7 @@ export interface Project {
   tagline: string;
   client: string;
   period: string;
-  engagement: 'Full-time' | 'Part-time · Freelance';
+  engagement: 'Full-time' | 'Part-time · Freelance' | 'Hourly · Freelance';
   categories: ProjectCategory[];
   ongoing?: boolean;
   role: string;

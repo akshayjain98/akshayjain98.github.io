@@ -19,6 +19,7 @@
         ],
         "keyProjects": [
           "AI Knowledge Assistant",
+          "Yacht Charter & Management Platform",
           "AI Job-Search Platform",
           "Commerce Analytics SaaS",
           "Enterprise E-commerce Platform"
@@ -88,9 +89,9 @@
       {
         "title": "Freelance Full-Stack & AI Engineer",
         "period": "Jun 2023 – Feb 2026",
-        "summary": "Part-time client work alongside my full-time role, delivering full-stack, data and AI features for clients in the US and India.",
+        "summary": "Freelance client work alongside my full-time role: part-time on BuildIt, and hourly engagements in US hours for Junkluggers and DoodyCalls, delivering full-stack, data and AI features for clients in the US and India.",
         "points": [
-          "Built AI-driven application generation with Gemini and multi-agent workflows for a no-code platform, plus RBAC and Stripe subscriptions.",
+          "Led full-stack development of an AI app builder: React/TypeScript frontend, Flask APIs, Stripe subscription billing with plan-based usage limits, and a Firestore → PostgreSQL migration.",
           "Wrote complex Amazon Redshift SQL and Python data workflows (S3 → Redshift) for business reporting.",
           "Built Django/PostgreSQL APIs, React/Redux dashboards and automated S3 + email report delivery for an operations platform.",
           "Worked directly with founders and client stakeholders on requirements, technical decisions and delivery."

@@ -1,0 +1,89 @@
+{
+  "slug": "enterprise-ecommerce",
+  "title": "Enterprise E-commerce Platform",
+  "tagline": "From building the product detail page to leading its team and client",
+  "client": "Client: USA",
+  "period": "Jul 2023 – Present",
+  "engagement": "Full-time",
+  "categories": [
+    "Frontend"
+  ],
+  "ongoing": true,
+  "role": "Front-End Engineer (PDP) → Team Lead",
+  "summary": "A large US home-furnishings e-commerce platform. For the first year I built the Product Detail Page hands-on: the PDP V2 architecture, configurator options and the start of PDP V3 behind feature flags. Since then I have led the work: training and supporting a junior developer, reviewing code and handling client communication.",
+  "overview": [
+    "A large-scale e-commerce platform for a US home-furnishings retailer, with a customer storefront and a Concierge app that in-store sales associates use. My focus was the Product Detail Page, the page where customers configure and buy.",
+    "In my first year (Jul 2023 – mid 2024) I coded hands-on: I set up the ProductV2 architecture that later PDP versions build on, added configurator options, split a heavy GraphQL query to speed up product cards, and started PDP V3 behind feature flags.",
+    "After that a junior developer took over day-to-day coding. I trained them on the codebase, review their code, and run the client side: requirement meetings, technical discussions and planning the project work."
+  ],
+  "tech": [
+    "React 18",
+    "TypeScript",
+    "GraphQL (Apollo Client)",
+    "Node.js (GraphQL BFF)",
+    "Vite",
+    "MUI / Emotion",
+    "Jest / Testing Library",
+    "Feature flags"
+  ],
+  "stats": [
+    {
+      "label": "Hands-on coding",
+      "value": "~1 yr",
+      "note": "Jul 2023 – mid 2024"
+    },
+    {
+      "label": "Leading",
+      "value": "2+ yrs",
+      "note": "mid 2024 – present"
+    },
+    {
+      "label": "Repo scale",
+      "value": "424",
+      "note": "contributors on the storefront"
+    },
+    {
+      "label": "Duration",
+      "value": "3+ yrs",
+      "note": "2023 – present"
+    }
+  ],
+  "statsNote": "From git history and my role on the project.",
+  "contributions": [
+    {
+      "area": "PDP rebuild foundation",
+      "layer": "Frontend",
+      "points": [
+        "Set up the ProductV2 architecture for the PDP rebuild, the base that later PDP versions build on.",
+        "Built a pagination component for product grids and added configurator options to the new PDP."
+      ]
+    },
+    {
+      "area": "PDP V3 behind feature flags",
+      "layer": "Frontend",
+      "points": [
+        "Started the PDP V3 work behind feature flags for safe rollouts: swatches, add-swatch-to-cart and surcharge messaging."
+      ]
+    },
+    {
+      "area": "Performance",
+      "layer": "Frontend",
+      "points": [
+        "Split a heavy product line-item GraphQL query into fragments and reworked related-product cards so they load faster."
+      ]
+    },
+    {
+      "area": "Team & client",
+      "points": [
+        "Trained a junior developer on the codebase and support them with implementation.",
+        "Review code to keep it in line with project standards.",
+        "Handle client communication: requirement meetings, technical discussions and project planning."
+      ]
+    }
+  ],
+  "achievements": [
+    "Laid the ProductV2 foundation that later PDP versions build on.",
+    "Grew from hands-on PDP engineer to leading the team and the client relationship.",
+    "Trained the developer who now builds PDP features day to day."
+  ]
+}

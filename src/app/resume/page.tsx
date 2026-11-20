@@ -98,7 +98,7 @@ export default function ResumePage() {
               </h3>
               <span className="text-gray-600">
                 {p.period}
-                {p.engagement !== 'Full-time' && ' · Part-time'}
+                {p.engagement !== 'Full-time' && ` · ${p.engagement === 'Hourly · Freelance' ? 'Hourly' : 'Part-time'}`}
               </span>
             </div>
             <p>{p.summary}</p>

@@ -1,0 +1,136 @@
+{
+  "slug": "buildit",
+  "title": "BuildIt",
+  "tagline": "AI app builder, from SDLC tool to self-serve SaaS",
+  "client": "Client: India",
+  "period": "Jul 2024 – Feb 2026",
+  "engagement": "Part-time · Freelance",
+  "categories": [
+    "AI",
+    "Full-stack"
+  ],
+  "role": "Lead Full-Stack Engineer",
+  "summary": "An AI-powered app builder: users describe an app in plain language, the platform generates it, and they refine it through chat, add branding and payments, and deploy. I was the main developer, building most of the frontend and backend plus billing, the database migration and deployment.",
+  "overview": [
+    "BuildIt started as an AI-assisted SDLC tool covering requirements, scope of work and solution proposals, then pivoted into a self-serve SaaS with subscription plans. In its final form, users described the app they wanted, the platform generated it, and they refined it through chat, applied branding, added payments, ran security scans and deployed.",
+    "I was the lead full-stack engineer on a two-person core team with the founder. I made the first commit on the React/TypeScript frontend, built most of the Flask backend, and owned Stripe billing, the move from Firestore to PostgreSQL, and the Azure deployment. The generation engine was a separate AI service (FastAPI, Gemini, multi-agent workflows) owned by others; I built the platform around it and its integration, and also fixed bugs and made changes inside the service."
+  ],
+  "tech": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "MUI",
+    "Tailwind / shadcn",
+    "Redux Toolkit",
+    "React Query",
+    "Python",
+    "Flask",
+    "FastAPI (AI service)",
+    "Gemini",
+    "SQLAlchemy / Alembic",
+    "PostgreSQL",
+    "Firebase",
+    "Redis",
+    "Stripe",
+    "Razorpay",
+    "Docker",
+    "GitHub Actions",
+    "Azure"
+  ],
+  "stats": [
+    {
+      "label": "Backend commits",
+      "value": "157",
+      "note": "~65% of all, the most of anyone"
+    },
+    {
+      "label": "Frontend commits",
+      "value": "336",
+      "note": "~53% of all, incl. the first commit"
+    },
+    {
+      "label": "Lines added",
+      "value": "~75K",
+      "note": "~61K FE · ~15K BE"
+    },
+    {
+      "label": "Duration",
+      "value": "~1.5 yrs",
+      "note": "Jul 2024 – Feb 2026"
+    }
+  ],
+  "statsNote": "Approximate, from git history across both repos.",
+  "contributions": [
+    {
+      "area": "Subscriptions & billing",
+      "layer": "Full-stack",
+      "points": [
+        "Integrated Razorpay first, then moved to Stripe: pricing tables, webhooks, the customer billing portal, trial status, plan sync and multi-currency.",
+        "Built plans, coupons and usage tracking, with an enforce_limit decorator that gated features by plan on monthly usage buckets aligned to the billing cycle.",
+        "Built the Usage page, a LockedActionButton for feature gating and permission state in Redux on the frontend."
+      ]
+    },
+    {
+      "area": "Firestore → PostgreSQL migration",
+      "layer": "Backend",
+      "points": [
+        "Designed the PostgreSQL schema with UUIDs and set up Alembic migrations.",
+        "Wrote paginated one-time migration scripts for users, apps and tasks.",
+        "Switched the identity key from user_id to user_uuid across the system without breaking existing users."
+      ]
+    },
+    {
+      "area": "AI app generation",
+      "layer": "Full-stack",
+      "points": [
+        "Built the APIs for generating an app from a prompt and refining it, with chat history and follow-ups, using authenticated calls to the AI service.",
+        "Added reactions and issue reporting, autocomplete and trending suggestions, a task status view, and branding and payment-integration features for generated apps."
+      ]
+    },
+    {
+      "area": "AI generation service (supporting)",
+      "layer": "Backend",
+      "points": [
+        "Fixed bugs and made smaller changes in the separate FastAPI generation service, which used Gemini and multi-agent workflows.",
+        "The service’s core design was not mine; this gave me hands-on experience with a multi-agent LLM backend."
+      ]
+    },
+    {
+      "area": "Frontend foundation",
+      "layer": "Frontend",
+      "points": [
+        "Made the initial commit: routing with public and private routes, the auth flow, layout, MUI, and Prettier/ESLint.",
+        "Built the reusable component library (DataTable, DataWrapper, CustomTabs, collapsible tables) plus search, filters, KPI views and responsive layouts."
+      ]
+    },
+    {
+      "area": "AI SDLC tool (phase 1)",
+      "layer": "Full-stack",
+      "points": [
+        "Built the requirements → scope of work → solution proposal flow, with mind maps and import/export.",
+        "Built the review-request workflow with filters and reviewer assignment, and the backend APIs behind it."
+      ]
+    },
+    {
+      "area": "Multi-tenancy & access",
+      "layer": "Backend",
+      "points": [
+        "Modelled tenants, groups and users, with admin user management and a custom role-check decorator for RBAC.",
+        "Built email verification and the onboarding and terms-acceptance flow."
+      ]
+    },
+    {
+      "area": "DevOps & reliability",
+      "layer": "Backend",
+      "points": [
+        "Dockerized the backend with migrations at container start, and set up GitHub Actions deploying to Azure Container Apps and Static Web Apps.",
+        "Added Redis-backed rate limiting, centralized error handling, and Black and pre-commit tooling."
+      ]
+    }
+  ],
+  "achievements": [
+    "Top committer on both repos; built the frontend from the first commit.",
+    "Worked directly with the founder to take the product from zero through a pivot to paid-plan SaaS with Stripe billing.",
+    "Migrated from Firestore to PostgreSQL with no loss of user data."
+  ]
+}

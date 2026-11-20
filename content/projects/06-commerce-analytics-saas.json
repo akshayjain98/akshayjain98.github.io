@@ -15,7 +15,8 @@
   "summary": "A multi-tenant analytics platform for Shopify merchants combining store, accounting and ad data into customer LTV, cohorts, financial reports, marketing ROI and an AI chat assistant. Built from the first commit and led for 3+ years.",
   "overview": [
     "A multi-tenant SaaS analytics platform for Shopify merchants. It pulls in each store’s orders, customers, products and discounts, plus accounting data from QuickBooks and ad spend from Google Ads and Meta, and turns it into customer lifetime value, cohort retention, segments, financial reports, marketing ROI and an AI assistant that answers questions about the store’s own data.",
-    "I was the founding and lead engineer: I made the initial commit, built most of the frontend and backend, ran the release flow from develop to staging to production, and ran it on GCP for over three years while other contributors joined and left."
+    "I was the founding and lead engineer: I made the initial commit, built most of the frontend and backend, ran the release flow from develop to staging to production, and ran it on GCP for over three years while other contributors joined and left.",
+    "Today I work on it alongside a junior developer, fitting it around my other projects. I handle the client, plan tasks and upcoming features, lead architecture discussions, review code, write code with Claude Code, and release changes to staging and production."
   ],
   "tech": [
     "Python",
@@ -28,7 +29,8 @@
     "Redux Toolkit",
     "Vite",
     "Ant Design",
-    "Gemini"
+    "Gemini",
+    "Claude Code"
   ],
   "stats": [
     {
@@ -100,6 +102,14 @@
       "area": "Frontend architecture",
       "points": [
         "The whole React app shell: sidebar, routing, filters, onboarding tours, responsive design and branded PDF reports."
+      ]
+    },
+    {
+      "area": "Leadership, client & releases",
+      "points": [
+        "Work with the client on tasks and the upcoming features to introduce, and lead the architecture discussions.",
+        "Pair with a junior developer, review their code, and write code with Claude Code for AI-assisted development.",
+        "Release changes to staging and production."
       ]
     }
   ],
