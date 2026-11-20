@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 3 1 * *' # monthly rebuild so build-time values like years of experience stay current
   workflow_dispatch:
 
 permissions:

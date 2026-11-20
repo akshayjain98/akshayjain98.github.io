@@ -22,8 +22,27 @@ function requireFields(file: string, obj: Record<string, unknown>, fields: strin
   if (missing.length) throw new Error(`content/${file}: missing required field(s): ${missing.join(', ')}`);
 }
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Whole years since the earliest start date in experience.json (e.g. "Dec 2019 – Present"),
+ * counting the start month and the current month. Evaluated at build time.
+ */
+export function getYearsOfExperience(now = new Date()): number {
+  const starts = getExperience().map((e, i) => {
+    const m = /^([A-Za-z]{3})\w*\s+(\d{4})/.exec(e.period);
+    const month = m ? MONTHS.indexOf(m[1]) : -1;
+    if (!m || month < 0) throw new Error(`content/experience.json [${i}]: period must start with "Mon YYYY", got "${e.period}"`);
+    return Number(m[2]) * 12 + month;
+  });
+  const months = now.getFullYear() * 12 + now.getMonth() - Math.min(...starts) + 1;
+  return Math.floor(months / 12);
+}
+
 export function getProfile(): Profile {
-  const data = readJson('profile.json');
+  // "{years}" anywhere in profile.json is replaced with the computed years of experience.
+  const years = String(getYearsOfExperience());
+  const data = JSON.parse(JSON.stringify(readJson('profile.json')).replaceAll('{years}', years));
   requireFields('profile.json', data, ['firstName', 'lastName', 'title', 'summary', 'links', 'heroStats', 'story', 'education', 'achievements']);
   return data as unknown as Profile;
 }

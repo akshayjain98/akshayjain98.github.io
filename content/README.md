@@ -4,7 +4,7 @@ Everything shown on the site comes from the files in this folder. Edit them and 
 
 | File | What it controls |
 |---|---|
-| `profile.json` | Name, title, summary, hero stats, story, education, achievements, social links. Optional: `photo` (e.g. `"/profile.jpg"`, file in `public/`), `openTo` (availability badge in the hero, empty = hidden), `siteUrl` (your live domain, used for link previews) |
+| `profile.json` | Name, title, summary, hero stats, story, education, achievements, social links. Optional: `photo` (e.g. `"/profile.jpg"`, file in `public/`), `openTo` (availability badge in the hero, empty = hidden), `siteUrl` (your live domain, used for link previews). Write `{years}` in any text to insert years of experience, calculated at build time from the earliest start date in `experience.json` |
 | `experience.json` | List of employers (`type`: `"Full-time"` or `"Part-time"`), each with a role-by-role timeline |
 | `skills.json` | Skill groups |
 | `projects/NN-name.json` | One file per project. Cards appear in filename order (`01-`, `02-`, …). |

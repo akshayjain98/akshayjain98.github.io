@@ -1,0 +1,118 @@
+Akshay Jain
+Senior Full-Stack / AI Engineer | Python, FastAPI, React, RAG, LLMs | AWS | PostgreSQL
+jainakshay.aj98@gmail.com | +91 9106792250
+
+Summary: Senior Full-Stack Engineer with 7+ years of experience building production applications with
+Python, FastAPI, Django, React, Next.js, TypeScript, PostgreSQL and AWS. I own features end to end, from
+APIs and data models to RBAC/IAM and LLM/RAG features, and today lead modules and architecture, mentor
+developers, review code and work directly with US and UK clients.
+
+TECHNICAL SKILLS
+Backend: Python, FastAPI, Django / DRF, Flask, Node.js (GraphQL BFF), REST APIs, GraphQL, SQLAlchemy
+Frontend: React.js, Next.js, TypeScript, Redux / Redux Toolkit, MobX, Tailwind, MUI, Ant Design
+AI / LLM: OpenAI, Gemini, RAG, Embeddings, Vector Search (pgvector), Multi-Agent Workflows, Claude Code
+Data: PostgreSQL, Amazon Redshift, Redis, MongoDB, Firebase/Firestore, Data Modeling, Query Optimization
+Cloud & DevOps: AWS (EC2, S3, IAM, Secrets Manager), GCP, Azure, Docker, GitHub Actions, CI/CD, Linux
+Auth & Security: Keycloak, RBAC, IAM, OAuth 2.0, OIDC, SSO, Passkeys (WebAuthn), Firebase Auth
+Integrations: Stripe, Razorpay, Shopify, QuickBooks, Google Ads, Meta Ads
+Testing & Tools: Pytest, Selenium, Jest, Storybook, Git, Jira, Postman, Figma
+
+PROJECTS
+
+AI Knowledge Assistant Platform - Client: UK (APR 2025 - Present)
+Role: Senior Full-Stack Developer / Module Lead
+● Leading the module, as its senior developer, for an enterprise AI knowledge assistant on FastAPI,
+Next.js, TypeScript, LLM APIs and AWS.
+● Built a reusable RAG framework over domain-specific enterprise knowledge, leading a junior developer
+who helped while I was on other work, plus S3 file upload and dynamic knowledge-base selection.
+● Contributed to authorization, RBAC and SSO; configured AWS IAM, Secrets Manager, logging and monitoring.
+● Finalized the architecture and data model for a new document-review product, with multi-agent review
+generation designed together with the AI developer.
+● Run the client calls, and mentor the junior developer who now handles day-to-day coding.
+
+Yacht Charter & Management Platform - Client: USA (JAN 2026 - APR 2026)
+Role: Team Lead & Senior Architect | Next.js, FastAPI, PostgreSQL, Passkeys, Custom RBAC
+● Owned the architecture and database design for a yacht charter and fleet-management platform.
+● Designed the access model with passkey (WebAuthn) sign-in and custom role-based access control.
+● Led client business discussions, planned tasks with developers and reviewed code, using Claude for code
+help and technical discussion.
+
+BuildIt - Client: India (JUL 2024 - FEB 2026) - Part-time Freelance
+Role: Lead Full-Stack Engineer | React, TypeScript, Flask, PostgreSQL, Stripe, Redis, Docker, Azure
+● Lead engineer on a two-person core team with the founder, building an AI app builder where users
+describe an app in plain language, refine it through chat and deploy it.
+● Built the React/TypeScript frontend from the first commit and most of the Flask backend, including
+multi-tenant user management and RBAC.
+● Implemented Stripe subscription billing with plan-based usage limits enforced through a custom decorator.
+● Led the Firestore-to-PostgreSQL migration (UUID schema, Alembic, migration scripts) with no data loss,
+and set up Dockerized CI/CD to Azure.
+● Fixed bugs and made changes in the separate AI service (FastAPI, Gemini, multi-agent workflows).
+
+AI Job-Search Platform - Client: USA (JUL 2024 - JAN 2025)
+Role: AI & Backend Engineer / Client Lead | Django, DRF, PostgreSQL, pgvector, OpenAI, GCP
+● Client point of contact and AI/backend engineer, working with a junior developer.
+● Extended the OpenAI enrichment pipeline with scheduled jobs and pgvector embeddings, and built
+resume-to-job matching plus GPT resume tailoring rendered to PDF.
+● Built Firebase-to-JWT auth, async resume parsing on Cloud Tasks, and job-tracker and auto-apply APIs.
+
+Multi-Tenant Commerce Analytics SaaS - USA (OCT 2023 - Present)
+Role: Founding & Lead Full-Stack Engineer | Django/DRF, PostgreSQL, Redis, React, GCP, Gemini
+● Made the initial commit and have run the product in production on GCP for 3+ years.
+● Built the Shopify sync pipeline and the customer analytics suite (LTV, cohorts, churn, segments,
+predictive LTV) with optimized SQL/CTE aggregations.
+● Integrated QuickBooks, Google Ads and Meta Ads, and shipped an AI chat assistant over store data.
+● Now work alongside a junior developer: client and feature planning, architecture, code review,
+AI-assisted development with Claude Code, and releases to staging and production.
+
+E-commerce - Client: USA (JUL 2023 - Present)
+Role: Front-End Engineer (PDP) → Team Lead | React, TypeScript, GraphQL, Node.js BFF, MUI, Jest
+● First year hands-on on the Product Detail Page of a large US home-furnishings platform: set up the
+ProductV2 architecture later PDP versions build on, and added configurator options.
+● Started PDP V3 behind feature flags, and split a heavy GraphQL query to speed up product cards.
+● Since mid 2024, train and support a junior developer, review code and handle client communication.
+
+Junkluggers - Client: USA (JAN 2024 - MAR 2024) - Hourly Freelance
+Role: Database and Backend Developer | Python, Amazon Redshift, SQL, AWS S3
+● Sole developer, working hourly in US hours directly with the client.
+● Wrote complex Amazon Redshift SQL and Python workflows for business reporting.
+● Built S3-to-Redshift data loading and optimized queries for faster, more reliable reports.
+
+DoodyCalls - Client: USA (JUN 2023 - DEC 2023) - Hourly Freelance
+Role: Full-Stack Developer | Django, PostgreSQL, React, Redux, Ant Design, AWS S3
+● Worked hourly in US hours on a pet waste management and operations platform.
+● Built Django/PostgreSQL REST APIs and React/Redux UI with reporting, filtering and exports.
+● Automated report generation, S3 upload and email delivery, removing manual reporting work.
+
+Data Labeling Tool - Client: USA (MAR 2020 - APR 2023)
+Role: Full-Stack Developer | Flask, Django, PostgreSQL, Keycloak, React, Redux, MobX, Docker, AWS
+● Top contributor out of 75 developers on an enterprise annotation platform for text, PDFs and images.
+● Built Flask/Django REST APIs, the PostgreSQL data model and Keycloak authentication and RBAC.
+● Led the migration to a React/Redux app and built Visual NER (PDF) annotation features.
+● Deployed with Docker on AWS EC2, with Pytest and Selenium suites run in CI.
+
+EXPERIENCE
+
+La Net Team Software Solution Pvt Ltd. (DEC 2019 - Present) - Full-time
+● Senior Full-Stack & AI Engineer | Technical Lead (JAN 2024 - Present): build AI-powered applications,
+lead architecture, mentor developers and work directly with US and UK clients.
+● Full-Stack Developer | Client & Project Coordination (JAN 2023 - DEC 2023): full-stack features plus
+client communication, requirement gathering, task assignment and code reviews.
+● Junior Python Developer (JUN 2020 - DEC 2022): Python, Flask, Django and PostgreSQL backends; frontend
+work from 2021.
+● Software Developer Intern (DEC 2019 - MAY 2020): Python and backend fundamentals; joined the Data
+Labeling Tool in March 2020.
+
+Independent / Freelance (JUN 2023 - FEB 2026) - Part-time and hourly
+● Part-time on BuildIt, and hourly US-hours work for Junkluggers and DoodyCalls.
+
+EDUCATION
+Integrated MCA (JUNE 2015 - MAY 2020) — 9.47 CGPA (Gold Medalist), SRIMCA, Uka Tarsadia University
+
+ACHIEVEMENTS
+● First rank in the Integrated MCA degree; awarded the Mahendra Govind Gold Medal by Uka Tarsadia University.
+● Recognized as Best Student of the 5-year Integrated MCA programme (batch year 2016-2017).
+● 1st rank at intercollegiate competitions Impetus 2018 (Byte-coder) and Impetus 2017 (Net Rising).
+
+LINKS
+LinkedIn: linkedin.com/in/iam-akshay | GitHub: github.com/akshayjain98
+Stack Overflow: stackoverflow.com/users/10325004/akshay-jain | Medium: iam-akshay.medium.com

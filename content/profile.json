@@ -10,11 +10,11 @@
     "stackoverflow": "https://stackoverflow.com/users/10325004/akshay-jain",
     "medium": "https://iam-akshay.medium.com"
   },
-  "summary": "Senior Full-Stack Engineer with 7+ years of experience designing and building production-grade applications using Python, FastAPI, Django, React, Next.js, TypeScript, PostgreSQL and AWS.",
+  "summary": "Senior Full-Stack Engineer with {years}+ years of experience designing and building production-grade applications using Python, FastAPI, Django, React, Next.js, TypeScript, PostgreSQL and AWS.",
   "summaryDetail": "I own features end-to-end: scalable backend systems and APIs, RBAC/IAM with Keycloak, optimized database workloads, and LLM/RAG capabilities inside enterprise applications. Today I lead modules, mentor developers, review code and work directly with clients to turn business requirements into technical solutions.",
   "heroStats": [
     {
-      "value": "7+",
+      "value": "{years}+",
       "label": "Years building production software"
     },
     {
